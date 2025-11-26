@@ -8,6 +8,7 @@ export default defineConfig({
                 main: resolve(__dirname, 'index.html'),
                 equipo: resolve(__dirname, 'equipo.html'),
                 manifesto: resolve(__dirname, 'manifesto.html'),
+                contacto: resolve(__dirname, 'contacto.html'),
             },
         },
     },
