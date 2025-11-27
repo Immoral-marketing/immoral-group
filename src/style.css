@@ -537,3 +537,45 @@ html {
         height: 400px !important;
     }
 }
+
+/* View Transitions API - Versión Robusta */
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-group(root) {
+    animation-duration: 1s;
+    /* Un poco más lento para ver si funciona */
+}
+
+/* Animación para MANTENER la página vieja visible */
+@keyframes hold {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+::view-transition-old(root) {
+    animation: hold 1s step-end forwards;
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    z-index: 9999;
+    animation: reveal 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+    mix-blend-mode: normal;
+}
+
+@keyframes reveal {
+    0% {
+        clip-path: circle(0% at 50% 100%);
+    }
+
+    100% {
+        clip-path: circle(150% at 50% 100%);
+    }
+}
