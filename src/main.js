@@ -848,26 +848,45 @@ function initModals() {
 let physicsRunner = null;
 let physicsRender = null;
 let physicsEngine = null;
+let physicsResizeHandler = null; // Variable para manejar el evento resize
 
 function initHeroPhysics() {
     const container = document.getElementById('hero-physics');
-    if (!container) return;
 
+    // --- CLEANUP (Limpieza robusta) ---
+    // Detener y limpiar Runner anterior
     if (physicsRunner) {
         Matter.Runner.stop(physicsRunner);
         physicsRunner = null;
     }
+    // Detener y limpiar Render anterior
     if (physicsRender) {
         Matter.Render.stop(physicsRender);
-        if (physicsRender.canvas) physicsRender.canvas.remove();
+        if (physicsRender.canvas) {
+            physicsRender.canvas.remove();
+        }
+        physicsRender.canvas = null;
+        physicsRender.context = null;
+        physicsRender.textures = {};
         physicsRender = null;
     }
+    // Limpiar Engine y World anterior
     if (physicsEngine) {
         Matter.World.clear(physicsEngine.world);
         Matter.Engine.clear(physicsEngine);
+        physicsEngine.events = {};
         physicsEngine = null;
     }
-    container.innerHTML = '';
+    // Remover Event Listener de Resize anterior
+    if (physicsResizeHandler) {
+        window.removeEventListener('resize', physicsResizeHandler);
+        physicsResizeHandler = null;
+    }
+
+    // Si no hay contenedor en esta página, terminamos aquí (después de limpiar)
+    if (!container) return;
+
+    container.innerHTML = ''; // Asegurar que el contenedor esté vacío
 
     const WALL_THICKNESS = 60;
     const TEAM_CIRCLE_SIZE_MIN = 90;
@@ -902,9 +921,26 @@ function initHeroPhysics() {
     }
 
     async function startPhysics() {
+        // Verificar de nuevo si el contenedor existe (por si cambió la página durante el await)
+        if (!document.getElementById('hero-physics')) return;
+
         const processedImages = await Promise.all(TEAM_IMAGES.map(processImage));
 
-        if (!document.getElementById('hero-physics')) return;
+        // Verificar OTRA VEZ después del await
+        const currentContainer = document.getElementById('hero-physics');
+        if (!currentContainer) return;
+
+        // ESPERAR A QUE EL CONTENEDOR TENGA DIMENSIONES (Fix para View Transitions)
+        let attempts = 0;
+        while ((currentContainer.clientWidth === 0 || currentContainer.clientHeight === 0) && attempts < 50) {
+            await new Promise(r => requestAnimationFrame(() => setTimeout(r, 20)));
+            attempts++;
+        }
+
+        if (currentContainer.clientWidth === 0 || currentContainer.clientHeight === 0) {
+            console.warn('Hero Physics: Container has no dimensions after waiting.');
+            return;
+        }
 
         const Engine = Matter.Engine,
             Render = Matter.Render,
@@ -919,29 +955,29 @@ function initHeroPhysics() {
         const world = physicsEngine.world;
 
         physicsRender = Render.create({
-            element: container,
+            element: currentContainer,
             engine: physicsEngine,
             options: {
-                width: container.clientWidth,
-                height: container.clientHeight,
+                width: currentContainer.clientWidth,
+                height: currentContainer.clientHeight,
                 background: 'transparent',
                 wireframes: false,
                 pixelRatio: window.devicePixelRatio
             }
         });
 
-        const ground = Bodies.rectangle(container.clientWidth / 2, container.clientHeight + WALL_THICKNESS / 2, container.clientWidth, WALL_THICKNESS, { isStatic: true, render: { visible: false } });
-        const leftWall = Bodies.rectangle(0 - WALL_THICKNESS / 2, container.clientHeight / 2, WALL_THICKNESS, container.clientHeight * 5, { isStatic: true, render: { visible: false } });
-        const rightWall = Bodies.rectangle(container.clientWidth + WALL_THICKNESS / 2, container.clientHeight / 2, WALL_THICKNESS, container.clientHeight * 5, { isStatic: true, render: { visible: false } });
-        const topWall = Bodies.rectangle(container.clientWidth / 2, -WALL_THICKNESS * 2, container.clientWidth, WALL_THICKNESS, { isStatic: true, render: { visible: false } });
+        const ground = Bodies.rectangle(currentContainer.clientWidth / 2, currentContainer.clientHeight + WALL_THICKNESS / 2, currentContainer.clientWidth, WALL_THICKNESS, { isStatic: true, render: { visible: false } });
+        const leftWall = Bodies.rectangle(0 - WALL_THICKNESS / 2, currentContainer.clientHeight / 2, WALL_THICKNESS, currentContainer.clientHeight * 5, { isStatic: true, render: { visible: false } });
+        const rightWall = Bodies.rectangle(currentContainer.clientWidth + WALL_THICKNESS / 2, currentContainer.clientHeight / 2, WALL_THICKNESS, currentContainer.clientHeight * 5, { isStatic: true, render: { visible: false } });
+        const topWall = Bodies.rectangle(currentContainer.clientWidth / 2, -WALL_THICKNESS * 2, currentContainer.clientWidth, WALL_THICKNESS, { isStatic: true, render: { visible: false } });
 
         Composite.add(world, [ground, leftWall, rightWall, topWall]);
 
         const bodies = [];
         processedImages.forEach((imgSrc) => {
             const radius = TEAM_CIRCLE_SIZE_MIN + Math.random() * (TEAM_CIRCLE_SIZE_MAX - TEAM_CIRCLE_SIZE_MIN);
-            const x = Math.random() * (container.clientWidth * 0.3) + (container.clientWidth * 0.05);
-            const y = Math.random() * (container.clientHeight / 2);
+            const x = Math.random() * (currentContainer.clientWidth * 0.3) + (currentContainer.clientWidth * 0.05);
+            const y = Math.random() * (currentContainer.clientHeight / 2);
             const circle = Bodies.circle(x, y, radius, {
                 restitution: 0.5,
                 friction: 0.01,
@@ -953,7 +989,7 @@ function initHeroPhysics() {
 
         for (let i = 0; i < 2; i++) {
             const radius = DOT_SIZE;
-            const x = Math.random() * (container.clientWidth * 0.3) + (container.clientWidth * 0.05);
+            const x = Math.random() * (currentContainer.clientWidth * 0.3) + (currentContainer.clientWidth * 0.05);
             const y = -Math.random() * 500 - 50;
             const color = DOT_COLORS[i % DOT_COLORS.length];
             const dot = Bodies.circle(x, y, radius, {
@@ -1001,17 +1037,41 @@ function initHeroPhysics() {
         physicsRunner = Runner.create();
         Runner.run(physicsRunner, physicsEngine);
 
-        window.addEventListener('resize', () => {
-            if (!physicsRender || !physicsRender.canvas) return;
-            physicsRender.canvas.width = container.clientWidth;
-            physicsRender.canvas.height = container.clientHeight;
-            Matter.Body.setPosition(ground, { x: container.clientWidth / 2, y: container.clientHeight + WALL_THICKNESS / 2 });
-            Matter.Body.setPosition(rightWall, { x: container.clientWidth + WALL_THICKNESS / 2, y: container.clientHeight / 2 });
-            Matter.Body.setPosition(topWall, { x: container.clientWidth / 2, y: -WALL_THICKNESS * 2 });
-        });
+        // Definir el handler de resize
+        physicsResizeHandler = () => {
+            if (!physicsRender || !physicsRender.canvas || !currentContainer) return;
+            physicsRender.canvas.width = currentContainer.clientWidth;
+            physicsRender.canvas.height = currentContainer.clientHeight;
+            Matter.Body.setPosition(ground, { x: currentContainer.clientWidth / 2, y: currentContainer.clientHeight + WALL_THICKNESS / 2 });
+            Matter.Body.setPosition(rightWall, { x: currentContainer.clientWidth + WALL_THICKNESS / 2, y: currentContainer.clientHeight / 2 });
+            Matter.Body.setPosition(topWall, { x: currentContainer.clientWidth / 2, y: -WALL_THICKNESS * 2 });
+        };
+
+        window.addEventListener('resize', physicsResizeHandler);
     }
 
     startPhysics();
+}
+
+// --- 15. SCROLL ANIMATIONS ---
+function initScrollAnimations() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Animamos solo una vez
+            }
+        });
+    }, observerOptions);
+
+    const elements = document.querySelectorAll('.fade-in-up');
+    elements.forEach(el => observer.observe(el));
 }
 
 // --- INICIALIZACIÓN GLOBAL ---
@@ -1030,6 +1090,8 @@ function initAll() {
     initModals();
     initCalendly();
     initHeroPhysics();
+    initScrollAnimations(); // Agregado: Animaciones de Scroll
+    if (typeof initGsapAnimations === 'function') initGsapAnimations(); // Agregado: GSAP Animations
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -1074,5 +1136,9 @@ function updateDOM(newDoc, url) {
     document.title = newDoc.title;
     history.pushState({}, '', url);
     window.scrollTo(0, 0);
-    initAll();
+
+    // Asegurar que el DOM esté listo antes de inicializar
+    requestAnimationFrame(() => {
+        initAll();
+    });
 }
