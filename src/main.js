@@ -1275,13 +1275,13 @@ function initGsapAnimations() {
             const childTl = gsap.timeline();
 
             childTl.to(mask, {
-                duration: 1.0,
+                duration: 0.4, // ⬅️ VELOCIDAD: Máscara cubre
                 x: '0%',
                 ease: "power2.inOut"
             })
                 .set(content, { opacity: 1 })
                 .to(mask, {
-                    duration: 1.0,
+                    duration: 0.3, // ⬅️ VELOCIDAD: Máscara descubre
                     x: '101%',
                     ease: "power2.inOut"
                 });
@@ -1311,13 +1311,13 @@ function initGsapAnimations() {
         });
 
         tl.to(mask, {
-            duration: 1.0, // Slower
+            duration: 0.3, // Slower
             x: '0%',
             ease: "power2.inOut"
         })
             .set(content, { opacity: 1 })
             .to(mask, {
-                duration: 1.0, // Slower
+                duration: 0.3, // Slower
                 x: '101%',
                 ease: "power2.inOut"
             });
