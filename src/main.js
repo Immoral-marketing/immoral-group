@@ -1,10 +1,13 @@
 import './style.css'
 import { initLoader } from './loader.js';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Initialize Loader
 initLoader();
 
-// --- 1. FUNCIÓN DROPDOWNS ---
 function initDropdowns() {
     const setupDropdown = (btnId, dropdownId) => {
         const btn = document.getElementById(btnId);
@@ -1091,7 +1094,301 @@ function initAll() {
     initCalendly();
     initHeroPhysics();
     initScrollAnimations(); // Agregado: Animaciones de Scroll
-    if (typeof initGsapAnimations === 'function') initGsapAnimations(); // Agregado: GSAP Animations
+    initGsapAnimations(); // Agregado: GSAP Animations
+}
+
+// --- 16. GSAP ANIMATIONS ---
+function splitTextIntoSpans(element) {
+    const text = element.textContent; // Use textContent to get text even if hidden
+    element.innerHTML = '';
+    const words = text.split(' ');
+
+    words.forEach((word, wordIndex) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.classList.add('word');
+        wordSpan.style.display = 'inline-block';
+        wordSpan.style.overflow = 'hidden';
+        wordSpan.style.verticalAlign = 'top'; // Asegura alineación correcta
+
+        // Split word into chars
+        const chars = word.split('');
+        chars.forEach(char => {
+            const charSpan = document.createElement('span');
+            charSpan.classList.add('char');
+            charSpan.style.display = 'inline-block';
+            charSpan.innerText = char;
+            wordSpan.appendChild(charSpan);
+        });
+
+        element.appendChild(wordSpan);
+
+        // Add space after word (except last one)
+        if (wordIndex < words.length - 1) {
+            const spaceSpan = document.createElement('span');
+            spaceSpan.innerHTML = '&nbsp;';
+            spaceSpan.style.display = 'inline-block';
+            element.appendChild(spaceSpan);
+        }
+    });
+}
+
+function splitTextIntoLines(element) {
+    const text = element.textContent;
+    element.innerHTML = '';
+    const words = text.split(' ');
+
+    // Create temporary word spans to measure positions
+    const tempWords = [];
+    words.forEach((word, index) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.style.display = 'inline-block';
+        wordSpan.textContent = word;
+        element.appendChild(wordSpan);
+        tempWords.push(wordSpan);
+
+        // Add space (except last word)
+        if (index < words.length - 1) {
+            element.appendChild(document.createTextNode(' '));
+        }
+    });
+
+    // Group words by line based on offsetTop
+    const lines = [];
+    let currentLine = [];
+    let currentTop = tempWords[0]?.offsetTop;
+
+    tempWords.forEach(wordSpan => {
+        if (wordSpan.offsetTop !== currentTop) {
+            // New line detected
+            lines.push(currentLine);
+            currentLine = [wordSpan.textContent];
+            currentTop = wordSpan.offsetTop;
+        } else {
+            currentLine.push(wordSpan.textContent);
+        }
+    });
+    if (currentLine.length > 0) lines.push(currentLine);
+
+    // Clear and rebuild with INLINE wrappers (like GSAP SplitText)
+    element.innerHTML = '';
+
+    lines.forEach((lineWords, index) => {
+        const lineWrapper = document.createElement('span'); // SPAN, no DIV
+        lineWrapper.classList.add('line-reveal-wrapper');
+        lineWrapper.style.display = 'inline-block'; // inline-block preserva el flow
+        lineWrapper.style.overflow = 'hidden';
+        lineWrapper.style.verticalAlign = 'top';
+
+        const innerSpan = document.createElement('span');
+        innerSpan.classList.add('line-reveal-inner');
+        innerSpan.style.display = 'inline-block';
+        innerSpan.textContent = lineWords.join(' ');
+
+        lineWrapper.appendChild(innerSpan);
+        element.appendChild(lineWrapper);
+
+        // Add space between wrappers (except last)
+        if (index < lines.length - 1) {
+            element.appendChild(document.createTextNode(' '));
+        }
+    });
+}
+
+function initGsapAnimations() {
+    // 1. Block Reveal Animation (Lando Norris style)
+    const blockRevealElements = document.querySelectorAll('.block-reveal');
+
+    // Phase 1: Setup DOM for ALL block-reveal elements
+    blockRevealElements.forEach(element => {
+        // Create mask if not exists
+        if (!element.querySelector('.block-reveal-mask')) {
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('block-reveal-wrapper');
+            wrapper.style.position = 'relative';
+            wrapper.style.display = 'inline-block';
+            wrapper.style.overflow = 'hidden';
+
+            // Determine wrapper type: use 'span' if element is 'A' to avoid nesting, otherwise 'a'
+            const wrapperType = element.tagName.toLowerCase() === 'a' ? 'span' : 'a';
+            const textWrapper = document.createElement(wrapperType);
+            textWrapper.style.display = 'inline-block';
+            textWrapper.style.textDecoration = 'none';
+            textWrapper.style.color = 'inherit';
+            textWrapper.style.pointerEvents = 'none'; // Prevent interaction
+
+            // Wrap content
+            while (element.firstChild) {
+                textWrapper.appendChild(element.firstChild);
+            }
+            wrapper.appendChild(textWrapper);
+            element.appendChild(wrapper);
+
+            const mask = document.createElement('div');
+            mask.classList.add('block-reveal-mask');
+            mask.style.position = 'absolute';
+            mask.style.top = '0';
+            mask.style.left = '0';
+            mask.style.width = '100%';
+            mask.style.height = '100%';
+            mask.style.backgroundColor = 'currentColor'; // Usa el color del texto
+            mask.style.zIndex = '2';
+            mask.style.transform = 'translateX(-101%)'; // Start hidden to the left
+            wrapper.appendChild(mask);
+
+            // Set initial state of content
+            gsap.set(wrapper.children[0], { opacity: 0 }); // Hide text initially
+        }
+
+        // Unhide wrapper (handled by CSS visibility: hidden)
+        const wrapper = element.querySelector('.block-reveal-wrapper');
+        wrapper.style.visibility = 'visible';
+
+        // Unhide the original element (handled by CSS .block-reveal { visibility: hidden })
+        element.style.visibility = 'visible';
+    });
+
+    // Phase 2: Animate Groups (Staggered)
+    const groups = document.querySelectorAll('.reveal-group');
+    groups.forEach(group => {
+        const children = group.querySelectorAll('.block-reveal');
+        if (children.length === 0) return;
+
+        children.forEach(child => child.classList.add('has-group-animation')); // Mark as handled
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: group,
+                start: "top 80%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        children.forEach((child, index) => {
+            const mask = child.querySelector('.block-reveal-mask');
+            const content = child.querySelector('.block-reveal-wrapper').children[0];
+
+            // Force initial state
+            gsap.set(mask, { x: '-101%' });
+            gsap.set(content, { opacity: 0 });
+
+            // Create a nested timeline for this child
+            const childTl = gsap.timeline();
+
+            childTl.to(mask, {
+                duration: 1.0,
+                x: '0%',
+                ease: "power2.inOut"
+            })
+                .set(content, { opacity: 1 })
+                .to(mask, {
+                    duration: 1.0,
+                    x: '101%',
+                    ease: "power2.inOut"
+                });
+
+            // Add to master timeline with overlap/stagger (0.2s delay between starts)
+            tl.add(childTl, index * 0.2);
+        });
+    });
+
+    // Phase 3: Animate Standalone Elements
+    blockRevealElements.forEach(element => {
+        if (element.classList.contains('has-group-animation')) return;
+
+        const mask = element.querySelector('.block-reveal-mask');
+        const content = element.querySelector('.block-reveal-wrapper').children[0];
+
+        // Force initial state
+        gsap.set(mask, { x: '-101%' });
+        gsap.set(content, { opacity: 0 });
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: element,
+                start: "top 80%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        tl.to(mask, {
+            duration: 1.0, // Slower
+            x: '0%',
+            ease: "power2.inOut"
+        })
+            .set(content, { opacity: 1 })
+            .to(mask, {
+                duration: 1.0, // Slower
+                x: '101%',
+                ease: "power2.inOut"
+            });
+    });
+
+    // 2. Staggered Text Reveal (SplitText simulation)
+    const splitTextElements = document.querySelectorAll('.reveal-text');
+
+    splitTextElements.forEach(element => {
+        if (!element.classList.contains('split-done')) {
+            splitTextIntoSpans(element);
+            element.classList.add('split-done');
+        }
+
+        // Unhide element (handled by CSS visibility: hidden)
+        element.style.visibility = 'visible';
+
+        const chars = element.querySelectorAll('.char');
+
+        if (chars.length > 0) {
+            // Ensure chars are visible for calculation but hidden by opacity
+            gsap.set(chars, { opacity: 0, y: 50 });
+
+            gsap.to(chars, {
+                y: 0,
+                opacity: 1,
+                duration: 1.6, // Slower
+                stagger: 0.02,
+                ease: "back.out(1.7)",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 85%",
+                    toggleActions: "play none none none" // Disable reverse
+                }
+            });
+        }
+    });
+
+    // 3. Line Reveal Animation (for long texts)
+    const lineRevealElements = document.querySelectorAll('.reveal-lines');
+
+    lineRevealElements.forEach(element => {
+        if (!element.classList.contains('lines-split-done')) {
+            element.style.visibility = 'hidden'; // Hide initially
+            splitTextIntoLines(element);
+            element.classList.add('lines-split-done');
+        }
+
+        element.style.visibility = 'visible'; // Unhide after split
+
+        const lines = element.querySelectorAll('.line-reveal-wrapper');
+
+        if (lines.length > 0) {
+            // Animate lines (GSAP SplitText style with yPercent)
+            const innerSpans = element.querySelectorAll('.line-reveal-inner');
+
+            // Animate from below (gsap.from animates FROM these values TO natural state)
+            gsap.from(innerSpans, {
+                duration: 0.6,
+                yPercent: 100,
+                opacity: 0,
+                stagger: 0.1,
+                ease: "expo.out",
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                }
+            });
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
