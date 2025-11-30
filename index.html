@@ -11,20 +11,25 @@
 </head>
 
 <body class="overflow-x-hidden w-dvw font-sans">
-    <!-- Loader Crítico (Pegar justo después de <body>) -->
-    <div id="global-loader"
-        style="position: fixed; inset: 0; z-index: 9999; background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease;">
-        <div
-            style="position: relative; width: 8rem; height: 8rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center;">
-            <img src="/imgs/Menues/logo-menu-oscuro.png" alt="Cargando..."
-                style="width: 100%; height: auto; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;">
+    <!-- Loader Crítico Mejorado -->
+    <div id="global-loader" class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center transition-opacity duration-500">
+        
+        <!-- Video Loader -->
+        <div class="relative w-48 h-48 mb-8 flex items-center justify-center">
+            <video autoplay loop muted playsinline class="w-full h-full object-contain">
+                <source src="/imgs/loader-blanco.mp4" type="video/mp4">
+            </video>
         </div>
-        <div style="width: 16rem; height: 0.25rem; background-color: #e5e7eb; border-radius: 9999px; overflow: hidden;">
-            <div id="loader-progress"
-                style="height: 100%; background-color: #2563eb; width: 0%; transition: width 0.2s ease-out;"></div>
+
+        <!-- Barra de Progreso (Más ancha) -->
+        <div class="w-10/12 max-w-3xl h-2 bg-gray-100 rounded-full overflow-hidden">
+            <div id="loader-progress" class="h-full bg-blue-600 w-0 transition-all duration-200 ease-out"></div>
         </div>
-        <div id="loader-percentage"
-            style="margin-top: 0.5rem; font-size: 0.875rem; color: #9ca3af; font-family: monospace;">0%</div>
+
+        <!-- Porcentaje (Lexend Black) -->
+        <div id="loader-percentage" class="mt-4 text-xl font-['Lexend'] font-black text-gray-400">
+            0%
+        </div>
     </div>
     <!-- PEGAR ESTO JUSTO DEBAJO DEL LOADER -->
     <script>

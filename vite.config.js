@@ -11,6 +11,7 @@ export default defineConfig({
                 contacto: resolve(__dirname, 'contacto.html'),
                 'casos-de-exito': resolve(__dirname, 'casos-de-exito.html'),
                 'caso-bobo': resolve(__dirname, 'caso-bobo.html'),
+                'nuestra-historia': resolve(__dirname, 'nuestra-historia.html'),
             },
         },
     },
