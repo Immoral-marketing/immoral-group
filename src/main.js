@@ -1133,7 +1133,7 @@ function splitTextIntoSpans(element) {
 }
 
 function splitTextIntoLines(element) {
-    const text = element.textContent;
+    const text = element.textContent.replace(/\s+/g, ' ').trim();
     element.innerHTML = '';
     const words = text.split(' ');
 
