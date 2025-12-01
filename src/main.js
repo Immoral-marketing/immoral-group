@@ -1497,9 +1497,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- VIEW TRANSITIONS LOGIC ---
+// Manejo de navegación SPA (Single Page Application)
 document.addEventListener('click', async (e) => {
     const link = e.target.closest('a');
     if (!link) return;
+    
+    // Ignorar links externos, ctrl+click, target blank o anclas
     if (link.hostname !== window.location.hostname || e.ctrlKey || link.target === '_blank' || link.href.includes('#')) return;
 
     e.preventDefault();
@@ -1510,40 +1513,72 @@ document.addEventListener('click', async (e) => {
         const text = await response.text();
         const parser = new DOMParser();
         const newDoc = parser.parseFromString(text, 'text/html');
+        
+        // Eliminar loader si existe en el nuevo documento para evitar que aparezca de nuevo
         const newLoader = newDoc.getElementById('global-loader');
         if (newLoader) newLoader.remove();
 
+        // Si no soporta View Transitions, actualizamos normal
         if (!document.startViewTransition) {
-            updateDOM(newDoc, url);
+            updateDOM(newDoc, url, true); // true = hacer pushState
             return;
         }
 
+        // Con View Transitions
         const transition = document.startViewTransition(() => {
-            updateDOM(newDoc, url);
+            updateDOM(newDoc, url, true); // true = hacer pushState
         });
 
         await transition.finished;
 
     } catch (err) {
-        console.error(err);
-        window.location.href = url;
+        console.error('Error en navegación:', err);
+        window.location.href = url; // Fallback
     }
 });
 
-function updateDOM(newDoc, url) {
+// Escuchar el evento popstate (Botón Atrás/Adelante del navegador)
+window.addEventListener('popstate', async () => {
+    const url = window.location.href;
+    try {
+        const response = await fetch(url);
+        const text = await response.text();
+        const parser = new DOMParser();
+        const newDoc = parser.parseFromString(text, 'text/html');
+        
+        const newLoader = newDoc.getElementById('global-loader');
+        if (newLoader) newLoader.remove();
+
+        if (!document.startViewTransition) {
+            updateDOM(newDoc, url, false); // false = NO hacer pushState (ya cambió la URL)
+            return;
+        }
+
+        const transition = document.startViewTransition(() => {
+            updateDOM(newDoc, url, false);
+        });
+
+    } catch (err) {
+        console.error('Error al volver atrás:', err);
+        window.location.reload(); // Fallback seguro
+    }
+});
+
+function updateDOM(newDoc, url, doPushState = true) {
     document.body.innerHTML = newDoc.body.innerHTML;
     document.title = newDoc.title;
-    history.pushState({}, '', url);
     
-    // FIX: Scroll agresivo e instantáneo al top.
-    // Usamos 'instant' para que no haya animación de subida.
+    // Solo hacemos pushState si es una navegación nueva (click), no si es volver atrás (popstate)
+    if (doPushState) {
+        history.pushState({}, '', url);
+    }
+    
+    // Scroll al inicio
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    
-    // Fallback por si acaso
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
 
-    // Asegurar que el DOM esté listo antes de inicializar
+    // Reinicializar scripts
     requestAnimationFrame(() => {
         initAll();
     });
