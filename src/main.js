@@ -1224,6 +1224,31 @@ function initImmoralEcosystem() {
     });
 }
 
+// --- COUNTER NUMBER ANIMATION ---
+function initCounters() {
+    const counters = document.querySelectorAll('.counter-value');
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: counter,
+                start: "top 85%",
+                toggleActions: "play none none none"
+            }
+        });
+        
+        const obj = { val: 0 };
+        tl.to(obj, {
+            val: target,
+            duration: 2,
+            ease: "power2.out",
+            onUpdate: () => {
+                counter.innerText = Math.round(obj.val);
+            }
+        });
+    });
+}
+
 // --- INICIALIZACIÓN GLOBAL ---
 function initAll() {
     // FIX GLOBAL: Desactivamos la restauración automática del scroll para SIEMPRE.
@@ -1247,6 +1272,7 @@ function initAll() {
     initCalendly();
     initHeroPhysics();
     initImmoralEcosystem();
+    initCounters();
     initScrollAnimations();
     initGsapAnimations();
 }
