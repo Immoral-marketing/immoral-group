@@ -166,14 +166,27 @@ function initMenu() {
 
         const handleScroll = () => {
             if (window.scrollY > 50) {
-                nav.classList.add('backdrop-blur-md', 'bg-white/50', 'shadow-sm');
-                nav.classList.remove('bg-transparent');
-                logoImg.src = '/imgs/Menues/logo-menu-oscuro.png';
-                navLinksContainer.classList.remove('text-white');
-                navLinksContainer.classList.add('text-black');
-                if (navArrows) navArrows.forEach(arrow => arrow.classList.add('invert'));
+                if (!isInitialDark) {
+                    // Caso: Empieza Blanco -> Scroll -> Fondo Blur Negro, Mantiene Blanco
+                    nav.classList.add('backdrop-blur-md', 'bg-black/70', 'shadow-sm');
+                    nav.classList.remove('bg-transparent');
+                    
+                    // Asegurar elementos blancos
+                    logoImg.src = '/imgs/Menues/logo-menu-claro.png';
+                    navLinksContainer.classList.add('text-white');
+                    navLinksContainer.classList.remove('text-black');
+                    if (navArrows) navArrows.forEach(arrow => arrow.classList.remove('invert'));
+                } else {
+                    // Caso: Empieza Oscuro -> Scroll -> Fondo Blur Blanco, Mantiene Negro
+                    nav.classList.add('backdrop-blur-md', 'bg-white/50', 'shadow-sm');
+                    nav.classList.remove('bg-transparent');
+                    logoImg.src = '/imgs/Menues/logo-menu-oscuro.png';
+                    navLinksContainer.classList.remove('text-white');
+                    navLinksContainer.classList.add('text-black');
+                    if (navArrows) navArrows.forEach(arrow => arrow.classList.add('invert'));
+                }
             } else {
-                nav.classList.remove('backdrop-blur-md', 'bg-white/50', 'shadow-sm');
+                nav.classList.remove('backdrop-blur-md', 'bg-white/50', 'bg-black/70', 'shadow-sm');
                 nav.classList.add('bg-transparent');
 
                 if (!isInitialDark) {
@@ -1157,6 +1170,60 @@ function initScrollAnimations() {
     elements.forEach(el => observer.observe(el));
 }
 
+// --- 17. IMMORAL ECOSYSTEM ---
+// --- 17. IMMORAL ECOSYSTEM ---
+function initImmoralEcosystem() {
+    const section = document.getElementById('immoral-ecosystem');
+    if (!section) return;
+
+    const items = section.querySelectorAll('.brand-item');
+    const bgImages = section.querySelectorAll('[data-bg]');
+    const defaultBg = section.querySelector('[data-bg="default"]');
+    
+    items.forEach(item => {
+        const target = item.dataset.target;
+        const bg = section.querySelector(`[data-bg="${target}"]`);
+        const body = item.querySelector('.brand-body');
+        const header = item.querySelector('.brand-header');
+        
+        // --- HOVER EFFECT: OPEN & SHOW ---
+        item.addEventListener('mouseenter', () => {
+            // 1. Mostrar Fondo
+            bgImages.forEach(img => img.classList.add('opacity-0'));
+            if(bg) bg.classList.remove('opacity-0');
+
+            // 2. Abrir Descripción (Accordion)
+            if (body) {
+                body.classList.remove('grid-rows-[0fr]');
+                body.classList.add('grid-rows-[1fr]');
+            }
+            // 3. Resaltar Header
+            if (header) {
+                header.classList.remove('opacity-50');
+                header.classList.add('opacity-100');
+            }
+        });
+
+        // --- MOUSE LEAVE: CLOSE & RESET ---
+        item.addEventListener('mouseleave', () => {
+            // 1. Resetear Fondo a Negro (Default)
+            bgImages.forEach(img => img.classList.add('opacity-0'));
+            if(defaultBg) defaultBg.classList.remove('opacity-0');
+
+            // 2. Cerrar Descripción
+            if (body) {
+                body.classList.remove('grid-rows-[1fr]');
+                body.classList.add('grid-rows-[0fr]');
+            }
+            // 3. Atenuar Header
+            if (header) {
+                header.classList.remove('opacity-100');
+                header.classList.add('opacity-50');
+            }
+        });
+    });
+}
+
 // --- INICIALIZACIÓN GLOBAL ---
 function initAll() {
     // FIX GLOBAL: Desactivamos la restauración automática del scroll para SIEMPRE.
@@ -1179,6 +1246,7 @@ function initAll() {
     initModals();
     initCalendly();
     initHeroPhysics();
+    initImmoralEcosystem();
     initScrollAnimations();
     initGsapAnimations();
 }

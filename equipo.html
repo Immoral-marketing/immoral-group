@@ -11,145 +11,142 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 </head>
 
-<body class="bg-white overflow-visible">
-      <nav
-    class="hidden xl:flex justify-between fixed inset-x-0 box-border px-10 pt-5 pb-5 font-black text-xs uppercase z-[100]">
-    <a href="index.html">
-      <div><img src="/imgs/Menues/logo-menu-oscuro.png" alt=""></div>
-    </a>
-    <div>
-      <div class="list-none flex flex-row items-center gap-12 text-black">
-
-        <div class="w-35 items-center flex flex-col relative" id="dropdownButton">
-          <div class="flex flex-row gap-3 justify-center" id="button">Quienes Somos
-            <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3 invert">
-          </div>
-          <div
-            class="mt-3 absolute left-0 top-full z-[100] w-50 hidden font-medium text-sm capitalize transition-all ease-out duration-300"
-            id="dropdown">
-            <ul class="flex flex-col bg-[#f7f7f7] text-black">
-              <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
-              <a href="nuestra-historia.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Nuestra historia</span>
-                </li>
-              </a>
-              <a href="manifesto.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Manifesto</span>
-                </li>
-              </a>
-              <a href="equipo.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Equipo</span>
-                </li>
-              </a>
-            </ul>
-          </div>
-        </div>
-
-        <div class="w-30 items-center flex flex-col relative" id="dropdownButton2">
-          <div class="flex flex-row gap-3 justify-center" id="button2">Servicios
-            <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3 invert">
-          </div>
-          <div
-            class="mt-3 absolute left-1/2 -translate-x-1/2 top-full z-[100] hidden w-52 font-medium text-sm capitalize transition-all ease-out duration-300"
-            id="dropdown2">
-            <ul class="flex flex-col bg-[#f7f7f7] text-black">
-              <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
-              <a href="gestion-de-redes.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Gestion de redes sociales</span>
-                </li>
-              </a>
-              <a href="influencer-marketing.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Influencer Marketing</span>
-                </li>
-              </a>
-              <a href="email-marketing.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Email Marketing Automation & Embudos de Venta</span>
-                </li>
-              </a>
-              <a href="automatizacion-de-procesos.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Automatizacion de procesos + IA</span>
-                </li>
-              </a>
-              <a href="diseno-de-marca.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Diseno de Marca & Contenidos</span>
-                </li>
-              </a>
-              <a href="publicidad-en-medios.html">
-                <li
-                  class="py-3 px-5 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Publicidad en medios</span>
-                </li>
-              </a>
-            </ul>
-          </div>
-        </div>
-        <div class="w-30 items-center flex flex-col relative" id="dropdownButton3">
-          <div class="flex flex-row gap-3 justify-center" id="button3">Verticales
-            <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3 invert">
-          </div>
-          <div
-            class="mt-3 absolute left-0 top-full z-[100] hidden w-max font-medium capitalize transition-all ease-out duration-300"
-            id="dropdown3">
-            <ul class="flex flex-col bg-[#f7f7f7] text-black">
-              <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
-              <a href="https://imfashion.es/" target="_blank">
-                <li
-                  class="flex flex-col items-start gap-2 py-4 px-5 border-b border-gray-300 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <img src="/imgs/Menues/logo-fashion.svg" alt="imfashion" class="h-7 w-auto">
-                  <span class="text-sm font-light whitespace-nowrap submenu-content">Brandformance
-                    para
-                    moda</span>
-                </li>
-              </a>
-              <a href="https://imfilms.es/" target="_blank">
-                <li
-                  class="flex flex-col items-start gap-2 py-4 px-5 border-b border-gray-300 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <img src="/imgs/Menues/logo-films.svg" alt="imfilms" class="h-7 w-auto">
-                  <span class="text-sm font-light whitespace-nowrap submenu-content">Publicidad para
-                    cine</span>
-                </li>
-              </a>
-              <li
-                class="flex flex-col items-start gap-2 py-4 px-5 border-b border-gray-300 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                <img src="/imgs/Menues/logo-content.svg" alt="imcontent" class="h-7 w-auto">
-                <span class="text-sm font-light whitespace-nowrap submenu-content">Contenido para Social
-                  Media</span>
-              </li>
-              <li
-                class="flex flex-col items-start gap-2 py-4 px-5 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                <img src="/imgs/Menues/logo-ia.svg" alt="immoralia" class="h-7 w-auto">
-                <span class="text-sm font-light whitespace-nowrap submenu-content">IA &
-                  Automatizaciones</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <a href="casos-de-exito.html">
-          <li>Casos de exito</li>
+<body class="bg-black overflow-visible">
+        <nav
+        class="hidden xl:flex justify-between fixed inset-x-0 box-border px-10 pt-5 pb-5 font-black text-xs uppercase z-[100]">
+        <a href="index.html">
+            <div><img src="/imgs/Menues/logo-menu-claro.png" alt=""></div>
         </a>
-        <a href="contacto.html"
-          class="flex items-center self-center h-10 px-8 bg-blue-500 text-white rounded hover:bg-blue-600">
-          <li>Contacto</li>
-        </a>
-      </div>
-    </div>
-  </nav>
+        <div>
+            <div class="list-none flex flex-row items-center gap-12 text-white">
+
+                <div class="w-auto items-center flex flex-col relative" id="dropdownButton">
+                    <div class="flex flex-row gap-3 justify-center" id="button">Quienes Somos
+                        <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3">
+                    </div>
+                    <div class="mt-3 absolute left-0 top-full z-40 w-36 hidden font-medium text-sm capitalize transition-all ease-out duration-300"
+                        id="dropdown">
+                        <ul class="flex flex-col bg-[#f7f7f7] text-white">
+                            <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
+                            <a href="nuestra-historia.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Nuestra historia</span>
+                                </li>
+                            </a>
+                            <a href="manifesto.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Manifesto</span>
+                                </li>
+                            </a>
+                            <a href="equipo.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Equipo</span>
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="w-30 items-center flex flex-col relative" id="dropdownButton2">
+                    <div class="flex flex-row gap-3 justify-center" id="button2">Servicios
+                        <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3">
+                    </div>
+                    <div class="mt-3 absolute left-1/2 -translate-x-1/2 top-full z-40 hidden w-52 font-medium text-sm capitalize transition-all ease-out duration-300"
+                        id="dropdown2">
+                        <ul class="flex flex-col bg-[#f7f7f7] text-black">
+                            <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
+                            <a href="gestion-de-redes.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Gestion de redes sociales</span>
+                                </li>
+                            </a>
+                            <a href="influencer-marketing.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Influencer Marketing</span>
+                                </li>
+                            </a>
+                            <a href="email-marketing.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Email Marketing Automation & Embudos de Venta</span>
+                                </li>
+                            </a>
+                            <a href="automatizacion-de-procesos.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Automatizacion de procesos + IA</span>
+                                </li>
+                            </a>
+                            <a href="diseno-de-marca.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Diseno de Marca & Contenidos</span>
+                                </li>
+                            </a>
+                            <a href="publicidad-en-medios.html">
+                                <li
+                                    class="py-3 px-5 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Publicidad en medios</span>
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+                <div class="w-30 items-center flex flex-col relative" id="dropdownButton3">
+                    <div class="flex flex-row gap-3 justify-center" id="button3">Verticales
+                        <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3">
+                    </div>
+                    <div class="mt-3 absolute left-0 top-full z-40 hidden w-max font-medium capitalize transition-all ease-out duration-300"
+                        id="dropdown3">
+                        <ul class="flex flex-col bg-[#f7f7f7] text-black">
+                            <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
+                            <a href="https://imfashion.es/" target="_blank">
+                                <li
+                                    class="flex flex-col items-start gap-2 py-4 px-5 border-b border-gray-300 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <img src="/imgs/Menues/logo-fashion.svg" alt="imfashion" class="h-7 w-auto">
+                                    <span class="text-sm font-light whitespace-nowrap submenu-content">Brandformance
+                                        para
+                                        moda</span>
+                                </li>
+                            </a>
+                            <a href="https://imfilms.es/" target="_blank">
+                                <li
+                                    class="flex flex-col items-start gap-2 py-4 px-5 border-b border-gray-300 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <img src="/imgs/Menues/logo-films.svg" alt="imfilms" class="h-7 w-auto">
+                                    <span class="text-sm font-light whitespace-nowrap submenu-content">Publicidad para
+                                        cine</span>
+                                </li>
+                            </a>
+                            <li
+                                class="flex flex-col items-start gap-2 py-4 px-5 border-b border-gray-300 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                <img src="/imgs/Menues/logo-content.svg" alt="imcontent" class="h-7 w-auto">
+                                <span class="text-sm font-light whitespace-nowrap submenu-content">Contenido para Social
+                                    Media</span>
+                            </li>
+                            <li
+                                class="flex flex-col items-start gap-2 py-4 px-5 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                <img src="/imgs/Menues/logo-ia.svg" alt="immoralia" class="h-7 w-auto">
+                                <span class="text-sm font-light whitespace-nowrap submenu-content">IA &
+                                    Automatizaciones</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="casos-de-exito.html">
+                    <li>Casos de exito</li>
+                </a>
+                <a href="contacto.html"
+                    class="flex items-center self-center h-10 px-8 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    <li>Contacto</li>
+                </a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Mobile/Tablet Header (visible solo en móvil y tablet) -->
 <div class="bg-white xl:hidden fixed top-0 inset-x-0 z-50 box-border w-full flex items-center justify-between px-4 py-4"
@@ -270,16 +267,16 @@
     </div>
 </div>
 
-    <section class="relative h-auto flex flex-col z-[2] bg-white">
+    <section class="relative h-auto flex flex-col z-[2] bg-black">
         <!-- Hero Section -->
         <div class=" flex-1 flex flex-col justify-center items-center px-0 xl:px-4 py-24">
             <div class="max-w-5xl mx-auto text-center">
                 <h1 class="reveal-group text-3xl xl:text-5xl font-black leading-tight mb-8 mt-12">
-                    <span class="block-reveal text-black text-5xl xl:text-7xl">El equipo que hace que</span><br
+                    <span class="block-reveal text-white text-5xl xl:text-7xl">El equipo que hace que</span><br
                         class="hidden xl:block">
-                    <span class="block-reveal text-4xl xl:text-7xl text-blue-500">Todo esto funcione</span>
+                    <span class="block-reveal text-4xl xl:text-7xl text-white">Todo esto funcione</span>
                 </h1>
-                <p class="px-2 xl:px-0 reveal-lines text-xl xl:text-2xl font-extralight leading-relaxed mb-12 max-w-2xl mx-auto">
+                <p class="px-2 xl:px-0 reveal-lines text-xl xl:text-2xl font-extralight leading-relaxed mb-12 max-w-2xl mx-auto text-white">
                     Somos personas. Profesionales con criterio. <br class="hidden xl:block">Y si, también un poco
                     obsesivos con el detalle.
                 </p>
@@ -288,15 +285,15 @@
     </section>
 
     <!-- Team Carousel Section -->
-    <section class="team-carousel-section w-full bg-white overflow-hidden z-10 relative">
+    <section class="team-carousel-section w-full bg-black overflow-hidden z-10 relative">
         <!-- Primera fila - Desplazamiento hacia la derecha -->
         <div class="team-carousel-container-right relative w-full h-48 xl:h-60 mb-8">
             <div class="team-carousel-track-right flex" style="transform: translateX(0px);">
                 <!-- Team Member Cards - Primera fila (7 personas) -->
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-marco.jpg" alt="Miembro del equipo 1" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/marco.webp" alt="Miembro del equipo 1" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
@@ -308,8 +305,8 @@
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-yure.jpg" alt="Miembro del equipo 2" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/yure.webp" alt="Miembro del equipo 2" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
@@ -322,12 +319,12 @@
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
                     <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
-                        src="public/imgs/equipo-jorge.jpg" alt="Miembro del equipo 3" />
+                        src="/imgs/equipo/florencia.webp" alt="Miembro del equipo 3" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Jorge Roman</h3>
-                            <p class="text-xs xl:text-sm opacity-90">CoFounder</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Florencia Gomez</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Head of Imcontent</p>
                         </div>
                     </div>
                 </div>
@@ -335,60 +332,61 @@
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
                     <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
-                        src="public/imgs/equipo-edu.jpg" alt="Miembro del equipo 4" />
+                        src="/imgs/equipo/mery.webp" alt="Miembro del equipo 4" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Eduardo Roman</h3>
-                            <p class="text-xs xl:text-sm opacity-90">CoFounder</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Mery González</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Head of Finanzas</p>
                         </div>
                     </div>
                 </div>
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-flor.jpg" alt="Miembro del equipo 5" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/alba.webp" alt="Miembro del equipo 5" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Florencia Gómez</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Brandformance Growth Director</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Alba Ortega</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Head of Immedia</p>
                         </div>
                     </div>
                 </div>
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-jose.jpg" alt="Miembro del equipo 6" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/daniel.webp" alt="Miembro del equipo 6" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Jose Gómez</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Brandformance Growth Director</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Daniel Parra</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Responsable administrativo</p>
                         </div>
                     </div>
                 </div>
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-coloma.png" alt="Miembro del equipo 7" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/manel.webp" alt="Miembro del equipo 7" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Coloma Serra</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Directora de Marca & Estrategia</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Manel Lara</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Automation & AI Specialist</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Duplicate cards for infinite scroll -->
+                <!-- Team Member Cards - Primera fila (7 personas) -->
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-marco.jpg" alt="Miembro del equipo 1" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/marco.webp" alt="Miembro del equipo 1" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
@@ -400,8 +398,8 @@
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-yure.jpg" alt="Miembro del equipo 2" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/yure.webp" alt="Miembro del equipo 2" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
@@ -414,12 +412,12 @@
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
                     <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
-                        src="public/imgs/equipo-jorge.jpg" alt="Miembro del equipo 3" />
+                        src="/imgs/equipo/florencia.webp" alt="Miembro del equipo 3" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Jorge Roman</h3>
-                            <p class="text-xs xl:text-sm opacity-90">CoFounder</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Florencia Gomez</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Head of Imcontent</p>
                         </div>
                     </div>
                 </div>
@@ -427,51 +425,51 @@
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
                     <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
-                        src="public/imgs/equipo-edu.jpg" alt="Miembro del equipo 4" />
+                        src="/imgs/equipo/mery.webp" alt="Miembro del equipo 4" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Eduardo Roman</h3>
-                            <p class="text-xs xl:text-sm opacity-90">CoFounder</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Mery González</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Head of Finanzas</p>
                         </div>
                     </div>
                 </div>
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-flor.jpg" alt="Miembro del equipo 5" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/alba.webp" alt="Miembro del equipo 5" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Florencia Gómez</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Brandformance Growth Director</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Alba Ortega</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Head of Immedia</p>
                         </div>
                     </div>
                 </div>
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-jose.jpg" alt="Miembro del equipo 6" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/daniel.webp" alt="Miembro del equipo 6" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Jose Gómez</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Brandformance Growth Director</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Daniel Parra</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Responsable administrativo</p>
                         </div>
                     </div>
                 </div>
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-coloma.png" alt="Miembro del equipo 7" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/manel.webp" alt="Miembro del equipo 7" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Coloma Serra</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Directora de Marca & Estrategia</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Manel Lara</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Automation & AI Specialist</p>
                         </div>
                     </div>
                 </div>
@@ -485,7 +483,7 @@
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
                     <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
-                        src="public/imgs/equipo-angie.jpg" alt="Miembro del equipo 8" />
+                        src="/imgs/equipo/angie.webp" alt="Miembro del equipo 8" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
@@ -497,8 +495,8 @@
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-bruno.jpeg" alt="Miembro del equipo 9" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/bruno.webp" alt="Miembro del equipo 9" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
@@ -510,8 +508,8 @@
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-greg.jpg" alt="Miembro del equipo 10" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/grego.webp" alt="Miembro del equipo 10" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
@@ -523,51 +521,51 @@
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-jenny.jpg" alt="Miembro del equipo 11" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/andres.webp" alt="Miembro del equipo 11" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Jenny Rincon</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Account Executive</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Andres Barrios</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Paid Media Specialist</p>
                         </div>
                     </div>
                 </div>
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-leidy.jpeg" alt="Miembro del equipo 12" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/leidy.webp" alt="Miembro del equipo 12" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
                             <h3 class="font-semibold text-sm xl:text-base">Leidy Puentes</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Account Executive</p>
+                            <p class="text-xs xl:text-sm opacity-90">Paid Media Specialist</p>
                         </div>
                     </div>
                 </div>
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-dani.jpg" alt="Miembro del equipo 13" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/silvia.webp" alt="Miembro del equipo 13" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Daniel Parra</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Administrativo</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Silvia Vera</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Content Creator & Community Manager</p>
                         </div>
                     </div>
                 </div>
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-manel.jpeg" alt="Miembro del equipo 14" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/david.webp" alt="Miembro del equipo 14" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Manel Lara</h3>
+                            <h3 class="font-semibold text-sm xl:text-base">David Navarrete</h3>
                             <p class="text-xs xl:text-sm opacity-90">Automation & AI Specialist</p>
                         </div>
                     </div>
@@ -575,13 +573,13 @@
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-david.jpeg" alt="Miembro del equipo" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/david.webp" alt="Miembro del equipo" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">David Navarrete</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Tecnico Automation & AI</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Jorge Orts</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Automation & AI Specialist</p>
                         </div>
                     </div>
                 </div>
@@ -590,7 +588,7 @@
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
                     <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
-                        src="public/imgs/equipo-angie.jpg" alt="Miembro del equipo 8" />
+                        src="/imgs/equipo/angie.webp" alt="Miembro del equipo 8" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
@@ -602,8 +600,8 @@
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-bruno.jpeg" alt="Miembro del equipo 9" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/bruno.webp" alt="Miembro del equipo 9" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
@@ -615,8 +613,8 @@
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-greg.jpg" alt="Miembro del equipo 10" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/grego.webp" alt="Miembro del equipo 10" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
@@ -628,51 +626,51 @@
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-jenny.jpg" alt="Miembro del equipo 11" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/andres.webp" alt="Miembro del equipo 11" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Jenny Rincon</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Account Executive</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Andres Barrios</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Paid Media Specialist</p>
                         </div>
                     </div>
                 </div>
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-leidy.jpeg" alt="Miembro del equipo 12" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/leidy.webp" alt="Miembro del equipo 12" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
                             <h3 class="font-semibold text-sm xl:text-base">Leidy Puentes</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Account Executive</p>
+                            <p class="text-xs xl:text-sm opacity-90">Paid Media Specialist</p>
                         </div>
                     </div>
                 </div>
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-dani.jpg" alt="Miembro del equipo 13" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/silvia.webp" alt="Miembro del equipo 13" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Daniel Parra</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Administrativo</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Silvia Vera</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Content Creator & Community Manager</p>
                         </div>
                     </div>
                 </div>
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-manel.jpeg" alt="Miembro del equipo 14" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/david.webp" alt="Miembro del equipo 14" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">Manel Lara</h3>
+                            <h3 class="font-semibold text-sm xl:text-base">David Navarrete</h3>
                             <p class="text-xs xl:text-sm opacity-90">Automation & AI Specialist</p>
                         </div>
                     </div>
@@ -680,51 +678,42 @@
 
                 <div
                     class="team-member flex-shrink-0 w-32 h-48 xl:w-[197px] xl:h-[236px] mx-2 xl:mx-4 relative group cursor-pointer">
-                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105 grayscale"
-                        src="public/imgs/equipo-david.jpeg" alt="Miembro del equipo" />
+                    <img class="w-full h-full object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                        src="/imgs/equipo/david.webp" alt="Miembro del equipo" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-end justify-center opacity-0 group-hover:opacity-100">
                         <div class="text-white text-center p-4">
-                            <h3 class="font-semibold text-sm xl:text-base">David Navarrete</h3>
-                            <p class="text-xs xl:text-sm opacity-90">Tecnico Automation & AI</p>
+                            <h3 class="font-semibold text-sm xl:text-base">Jorge Orts</h3>
+                            <p class="text-xs xl:text-sm opacity-90">Automation & AI Specialist</p>
                         </div>
                     </div>
                 </div>
     </section>
     <!-- Seccion CTA Final -->
-    <section class="w-full bg-white pt-20 xl:pt-32 px-8 xl:px-6 text-center">
+    <section class="w-full bg-black pt-20 xl:pt-32 px-8 xl:px-6 text-center">
         <div class="max-w-4xl mx-auto">
-            <h2 class="block-reveal font-black text-5xl sm:text-6xl xl:text-7xl mb-8 text-black">
-                Y tu, ¿eres immoral?
+            <h2 class="block-reveal font-black text-5xl sm:text-6xl xl:text-7xl mb-8 text-white">
+                Y tu, ¿Quieres ser parte de Immoral?
             </h2>
             <div class="space-y-1">
-                <p class="hidden xl:block reveal-lines font-normal text-xl sm:text-2xl text-gray-800">
-                    Si lo que ves por aquí te resuena y sientes que
-                </p>
-                <p class="hidden xl:block reveal-lines font-normal text-xl sm:text-2xl text-gray-800">
-                    podríamos ser equipo,
-                </p>
-
-
-                <p class="xl:hidden reveal-lines font-normal text-xl sm:text-2xl text-gray-800">
-                    Si lo que ves por aquí te resuena y sientes que podríamos ser equipo,
+                <p class="hidden xl:block reveal-lines font-normal text-xl sm:text-2xl text-white">
+                    Si te motiva trabajar en proyectos con impacto, rodearte de personas creativas, inquietas y con ganas de ir siempre un paso más allá...
                 </p>
                 <p class="reveal-lines inline-block font-normal text-xl sm:text-2xl text-[#4889eb]">
-                    ¡cuéntanoslo!
+                    quizá este sea tu sitio.
                 </p>
             </div>
         </div>
     </section>
     <!-- Seccion Ofertas Activas -->
-    <section class="w-full bg-white py-20 xl:py-32 px-6 sm:px-12 xl:px-24">
+    <section class="w-full bg-black py-20 xl:py-32 px-6 sm:px-12 xl:px-24">
         <div class="max-w-[1400px] mx-auto flex flex-col xl:flex-row gap-16 items-start">
             <!-- Título a la izquierda (más ancho) -->
             <div class="w-full xl:w-2/5">
-                <h2 class="block-reveal font-black text-2xl xl:text-6xl mb-2 xl:mb-6 text-[#4889eb] leading-tight">Ofertas
+                <h2 class="block-reveal font-black text-2xl xl:text-6xl mb-2 xl:mb-6 text-white leading-tight">Ofertas
                     activas</h2>
-                <p class="reveal-lines font-normal text-lg text-gray-800">¿Tienes experiencia, ideas y</p>
-                <p class="reveal-lines font-normal text-lg text-gray-800 mb-2">hambre de hacer las cosas mejor?</p>
-                <p class="reveal-lines font-normal text-lg text-[#4889eb]">Te estamos esperando.</p>
+                <p class="reveal-lines font-normal text-lg text-white">Estamos creciendo, y siempre atentos</p>
+                <p class="reveal-lines font-normal text-lg text-white mb-2">a suma talentos con actitud</p>
             </div>
 
             <!-- Grid de Cards a la derecha (un poco más estrecho) -->
@@ -733,8 +722,8 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <!-- Card 1 - Paid Media Specialist -->
                     <div
-                        class="group bg-gray-50 hover:bg-black p-8 rounded-3xl flex flex-col min-h-[180px] border border-gray-200 hover:border-black transition-all duration-300 hover:rotate-2 cursor-pointer">
-                        <img src="/imgs/ico-home-box-2.png" alt="icon" class="w-12 h-12 mb-6">
+                        class="group bg-gray-50 hover:bg-gray-900 p-8 rounded-3xl flex flex-col min-h-[180px] border border-gray-200 hover:border-black transition-all duration-300 hover:rotate-2 cursor-pointer">
+                        <img src="/imgs/ico-mani-box-1.png" alt="icon" class="w-12 h-12 mb-6">
                         <h4
                             class="font-light text-3xl mb-3 text-[#4889eb] group-hover:text-[#4889eb] transition-all duration-300">
                             Paid Media Specialist
@@ -743,8 +732,8 @@
 
                     <!-- Card 2 - Email & Marketing Automation Specialist -->
                     <div
-                        class="group bg-gray-50 hover:bg-black p-8 rounded-3xl flex flex-col min-h-[180px] border border-gray-200 hover:border-black transition-all duration-300 hover:rotate-2 cursor-pointer">
-                        <img src="/imgs/ico-home-box-1.png" alt="icon" class="w-12 h-12 mb-6">
+                        class="group bg-gray-50 hover:bg-gray-900 p-8 rounded-3xl flex flex-col min-h-[180px] border border-gray-200 hover:border-black transition-all duration-300 hover:rotate-2 cursor-pointer">
+                        <img src="/imgs/ico-mani-box-2.png" alt="icon" class="w-12 h-12 mb-6">
                         <h4
                             class="font-light text-3xl mb-3 text-[#4889eb] group-hover:text-[#4889eb] transition-all duration-300">
                             Email & Marketing<br>Automation Specialist
@@ -776,7 +765,7 @@
             </div>
 
             <a href="mailto:rrhh@immoral.marketing"
-                class="inline-block bg-white text-black font-bold text-sm sm:text-base py-4 px-10 rounded hover:bg-gray-100 transition-colors duration-300 uppercase tracking-wide">
+                class="inline-block bg-white text-black font-light text-sm sm:text-base py-4 px-10 rounded hover:bg-gray-100 transition-colors duration-300 uppercase tracking-wide">
                 Quiero formar parte
             </a>
         </div>

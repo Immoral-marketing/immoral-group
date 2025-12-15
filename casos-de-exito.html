@@ -11,145 +11,142 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 </head>
 
-<body class="bg-white overflow-visible">
-      <nav
-    class="hidden xl:flex justify-between fixed inset-x-0 box-border px-10 pt-5 pb-5 font-black text-xs uppercase z-[100]">
-    <a href="index.html">
-      <div><img src="/imgs/Menues/logo-menu-oscuro.png" alt=""></div>
-    </a>
-    <div>
-      <div class="list-none flex flex-row items-center gap-12 text-black">
-
-        <div class="w-35 items-center flex flex-col relative" id="dropdownButton">
-          <div class="flex flex-row gap-3 justify-center" id="button">Quienes Somos
-            <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3 invert">
-          </div>
-          <div
-            class="mt-3 absolute left-0 top-full z-[100] w-50 hidden font-medium text-sm capitalize transition-all ease-out duration-300"
-            id="dropdown">
-            <ul class="flex flex-col bg-[#f7f7f7] text-black">
-              <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
-              <a href="nuestra-historia.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Nuestra historia</span>
-                </li>
-              </a>
-              <a href="manifesto.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Manifesto</span>
-                </li>
-              </a>
-              <a href="equipo.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Equipo</span>
-                </li>
-              </a>
-            </ul>
-          </div>
-        </div>
-
-        <div class="w-30 items-center flex flex-col relative" id="dropdownButton2">
-          <div class="flex flex-row gap-3 justify-center" id="button2">Servicios
-            <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3 invert">
-          </div>
-          <div
-            class="mt-3 absolute left-1/2 -translate-x-1/2 top-full z-[100] hidden w-52 font-medium text-sm capitalize transition-all ease-out duration-300"
-            id="dropdown2">
-            <ul class="flex flex-col bg-[#f7f7f7] text-black">
-              <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
-              <a href="gestion-de-redes.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Gestion de redes sociales</span>
-                </li>
-              </a>
-              <a href="influencer-marketing.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Influencer Marketing</span>
-                </li>
-              </a>
-              <a href="email-marketing.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Email Marketing Automation & Embudos de Venta</span>
-                </li>
-              </a>
-              <a href="automatizacion-de-procesos.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Automatizacion de procesos + IA</span>
-                </li>
-              </a>
-              <a href="diseno-de-marca.html">
-                <li
-                  class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Diseno de Marca & Contenidos</span>
-                </li>
-              </a>
-              <a href="publicidad-en-medios.html">
-                <li
-                  class="py-3 px-5 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <span class="submenu-content">Publicidad en medios</span>
-                </li>
-              </a>
-            </ul>
-          </div>
-        </div>
-        <div class="w-30 items-center flex flex-col relative" id="dropdownButton3">
-          <div class="flex flex-row gap-3 justify-center" id="button3">Verticales
-            <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3 invert">
-          </div>
-          <div
-            class="mt-3 absolute left-0 top-full z-[100] hidden w-max font-medium capitalize transition-all ease-out duration-300"
-            id="dropdown3">
-            <ul class="flex flex-col bg-[#f7f7f7] text-black">
-              <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
-              <a href="https://imfashion.es/" target="_blank">
-                <li
-                  class="flex flex-col items-start gap-2 py-4 px-5 border-b border-gray-300 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <img src="/imgs/Menues/logo-fashion.svg" alt="imfashion" class="h-7 w-auto">
-                  <span class="text-sm font-light whitespace-nowrap submenu-content">Brandformance
-                    para
-                    moda</span>
-                </li>
-              </a>
-              <a href="https://imfilms.es/" target="_blank">
-                <li
-                  class="flex flex-col items-start gap-2 py-4 px-5 border-b border-gray-300 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                  <img src="/imgs/Menues/logo-films.svg" alt="imfilms" class="h-7 w-auto">
-                  <span class="text-sm font-light whitespace-nowrap submenu-content">Publicidad para
-                    cine</span>
-                </li>
-              </a>
-              <li
-                class="flex flex-col items-start gap-2 py-4 px-5 border-b border-gray-300 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                <img src="/imgs/Menues/logo-content.svg" alt="imcontent" class="h-7 w-auto">
-                <span class="text-sm font-light whitespace-nowrap submenu-content">Contenido para Social
-                  Media</span>
-              </li>
-              <li
-                class="flex flex-col items-start gap-2 py-4 px-5 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
-                <img src="/imgs/Menues/logo-ia.svg" alt="immoralia" class="h-7 w-auto">
-                <span class="text-sm font-light whitespace-nowrap submenu-content">IA &
-                  Automatizaciones</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <a href="casos-de-exito.html">
-          <li>Casos de exito</li>
+<body class="overflow-visible">
+    <nav
+        class="hidden xl:flex justify-between fixed inset-x-0 box-border px-10 pt-5 pb-5 font-black text-xs uppercase z-[100]">
+        <a href="index.html">
+            <div><img src="/imgs/Menues/logo-menu-claro.png" alt=""></div>
         </a>
-        <a href="contacto.html"
-          class="flex items-center self-center h-10 px-8 bg-blue-500 text-white rounded hover:bg-blue-600">
-          <li>Contacto</li>
-        </a>
-      </div>
-    </div>
-  </nav>
+        <div>
+            <div class="list-none flex flex-row items-center gap-12 text-white">
+
+                <div class="w-auto items-center flex flex-col relative" id="dropdownButton">
+                    <div class="flex flex-row gap-3 justify-center" id="button">Quienes Somos
+                        <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3">
+                    </div>
+                    <div class="mt-3 absolute left-0 top-full z-40 w-36 hidden font-medium text-sm capitalize transition-all ease-out duration-300"
+                        id="dropdown">
+                        <ul class="flex flex-col bg-[#f7f7f7] text-white">
+                            <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
+                            <a href="nuestra-historia.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Nuestra historia</span>
+                                </li>
+                            </a>
+                            <a href="manifesto.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Manifesto</span>
+                                </li>
+                            </a>
+                            <a href="equipo.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Equipo</span>
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="w-30 items-center flex flex-col relative" id="dropdownButton2">
+                    <div class="flex flex-row gap-3 justify-center" id="button2">Servicios
+                        <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3">
+                    </div>
+                    <div class="mt-3 absolute left-1/2 -translate-x-1/2 top-full z-40 hidden w-52 font-medium text-sm capitalize transition-all ease-out duration-300"
+                        id="dropdown2">
+                        <ul class="flex flex-col bg-[#f7f7f7] text-black">
+                            <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
+                            <a href="gestion-de-redes.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Gestion de redes sociales</span>
+                                </li>
+                            </a>
+                            <a href="influencer-marketing.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Influencer Marketing</span>
+                                </li>
+                            </a>
+                            <a href="email-marketing.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Email Marketing Automation & Embudos de Venta</span>
+                                </li>
+                            </a>
+                            <a href="automatizacion-de-procesos.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Automatizacion de procesos + IA</span>
+                                </li>
+                            </a>
+                            <a href="diseno-de-marca.html">
+                                <li
+                                    class="py-3 px-5 border-b border-gray-300 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Diseno de Marca & Contenidos</span>
+                                </li>
+                            </a>
+                            <a href="publicidad-en-medios.html">
+                                <li
+                                    class="py-3 px-5 w-full text-center hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <span class="submenu-content">Publicidad en medios</span>
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+                <div class="w-30 items-center flex flex-col relative" id="dropdownButton3">
+                    <div class="flex flex-row gap-3 justify-center" id="button3">Verticales
+                        <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3">
+                    </div>
+                    <div class="mt-3 absolute left-0 top-full z-40 hidden w-max font-medium capitalize transition-all ease-out duration-300"
+                        id="dropdown3">
+                        <ul class="flex flex-col bg-[#f7f7f7] text-black">
+                            <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
+                            <a href="https://imfashion.es/" target="_blank">
+                                <li
+                                    class="flex flex-col items-start gap-2 py-4 px-5 border-b border-gray-300 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <img src="/imgs/Menues/logo-fashion.svg" alt="imfashion" class="h-7 w-auto">
+                                    <span class="text-sm font-light whitespace-nowrap submenu-content">Brandformance
+                                        para
+                                        moda</span>
+                                </li>
+                            </a>
+                            <a href="https://imfilms.es/" target="_blank">
+                                <li
+                                    class="flex flex-col items-start gap-2 py-4 px-5 border-b border-gray-300 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                    <img src="/imgs/Menues/logo-films.svg" alt="imfilms" class="h-7 w-auto">
+                                    <span class="text-sm font-light whitespace-nowrap submenu-content">Publicidad para
+                                        cine</span>
+                                </li>
+                            </a>
+                            <li
+                                class="flex flex-col items-start gap-2 py-4 px-5 border-b border-gray-300 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                <img src="/imgs/Menues/logo-content.svg" alt="imcontent" class="h-7 w-auto">
+                                <span class="text-sm font-light whitespace-nowrap submenu-content">Contenido para Social
+                                    Media</span>
+                            </li>
+                            <li
+                                class="flex flex-col items-start gap-2 py-4 px-5 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 cursor-pointer submenu-item">
+                                <img src="/imgs/Menues/logo-ia.svg" alt="immoralia" class="h-7 w-auto">
+                                <span class="text-sm font-light whitespace-nowrap submenu-content">IA &
+                                    Automatizaciones</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="casos-de-exito.html">
+                    <li>Casos de exito</li>
+                </a>
+                <a href="contacto.html"
+                    class="flex items-center self-center h-10 px-8 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    <li>Contacto</li>
+                </a>
+            </div>
+        </div>
+    </nav>
     <!-- Mobile/Tablet Header (visible solo en móvil y tablet) -->
 <div class="bg-white xl:hidden fixed top-0 inset-x-0 z-50 box-border w-full flex items-center justify-between px-4 py-4"
     style="padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right);">
@@ -268,7 +265,7 @@
         </div>
     </div>
 </div>
-    <section class="relative h-[100vh] xl:h-[80vh] flex flex-col z-[2] overflow-hidden">
+    <section class="bg-black relative h-[100vh] xl:h-[80vh] flex flex-col z-[2] overflow-hidden">
         <!-- Physics Background -->
         <div id="hero-physics" class="absolute inset-0 w-full h-full z-0 pointer-events-auto"></div>
 
@@ -276,10 +273,10 @@
         <div class="flex-1 flex flex-col justify-start xl:justify-center items-start xl:items-end px-4 pt-32 xl:pt-8 pb-0 xl:pb-24 relative z-10 pointer-events-none">
             <div class="max-w-5xl text-left xl:text-right pr-6">
                 <h1 class="reveal-group text-2xl xl:text-6xl font-black leading-tight mr-8 mb-8">
-                    <span class="block-reveal text-black">No lo decimos nosotros.</span><br>
-                    <span class="block-reveal text-blue-500">Lo dicen los resultados.</span>
+                    <span class="block-reveal text-white">No lo decimos nosotros.</span><br>
+                    <span class="block-reveal text-white">Lo dicen los resultados.</span>
                 </h1>
-                <p class="reveal-lines text-lg xl:text-xl font-light leading-relaxed mr-8 mb-12 xl:max-w-2xl ml-auto">
+                <p class="text-white reveal-lines text-lg xl:text-xl font-light leading-relaxed mr-8 mb-12 xl:max-w-2xl ml-auto">
                     Cada marca con la que trabajamos llega con una historia.<br> Y nuestro trabajo es que esa historia
                     avance. Crezca. Se transforme.<br><br> Aquí no hay promesas vacías ni slides de impacto. Solo
                     proyectos
@@ -289,13 +286,13 @@
     </section>
 
     <!-- Success Cases Section -->
-    <section class="relative w-full py-12 xl:py-12 z-[2] bg-blue-500" id="casos-exito">
+    <section class="relative w-full py-12 xl:py-12 z-[2] bg-white" id="casos-exito">
         <div class="w-full px-0">
             <!-- Section Title -->
             <header class="text-left ml-6 mb-8">
-                <h2 class="text-white text-4xl xl:text-7xl font-black">
+                <h2 class="text-black text-4xl xl:text-7xl font-black">
                     <a class="block-reveal">Casos de</a><br> <a class="block-reveal"> <span
-                            class="text-[#a7fffc]">éxito</span></a>
+                            class="text-black">éxito</span></a>
                 </h2>
             </header>
 
@@ -705,7 +702,7 @@
 
                 <!-- Scroll Indicator (Mobile) -->
                 <div class="flex justify-center mt-4">
-                    <p class="text-white/70 text-sm font-light flex items-center gap-2">
+                    <p class="text-black/70 text-sm font-light flex items-center gap-2">
                         <svg class="w-4 h-4 -rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M7 16l4-4 4 4m0-8l-4-4-4 4"></path>
@@ -716,120 +713,125 @@
             </div>
         </div>
     </section>
-    <!--! Testimonials -->
-    <!-- Simple Testimonials (nuevo diseño simplificado) -->
-    <section class="w-full bg-white py-10 sm:py-20 xl:py-24">
-        <div class="max-w-[1600px] mx-auto px-8">
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-12 items-start">
-                <div>
-                    <h2 class="font-black text-2xl xl:text-5xl xl:mt-16">
-                        <a class="block-reveal">Lo que más valoran no </a><span class="hidden xl:inline"><br></span>
-                        <a class="block-reveal">es solo lo que hacemos, </a><span class="hidden xl:inline"><br></span>
-                        <a class="block-reveal"><span class="text-[#4889eb] text-3xl xl:text-5xl">es cómo lo hacemos</span></a>
+    <!--! Testimonials (Nuevo Diseño Dark) -->
+    <section class="w-full bg-black py-16 xl:py-24 px-6 sm:px-12">
+        <div class="max-w-[1600px] mx-auto">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-12 items-center">
+                
+                <!-- Columna Izquierda: Título -->
+                <div class="xl:pr-12">
+                    <h2 class="font-black text-3xl xl:text-5xl text-white leading-tight">
+                        Lo que más valoran no es<br class="hidden xl:inline">
+                        solo lo que hacemos,<br class="hidden xl:inline">
+                        <span class="text-white">es cómo lo hacemos.</span>
                     </h2>
                 </div>
 
-
-
-                <div class="relative px-8 xl:px-12">
+                <!-- Columna Derecha: Carrusel -->
+                <div class="relative px-0 xl:px-8">
+                    <!-- Botones de navegación -->
                     <button id="simple-testimonials-prev" aria-label="Anterior"
-                        class="absolute left-0 xl:-left-16 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#4889eb]">
+                        class="absolute left-0 xl:-left-6 top-1/2 -translate-y-1/2 z-10 bg-[#1a1a1a] hover:bg-[#2a2a2a] rounded-full p-3 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#4889eb]">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 18L9 12L15 6" stroke="#000" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
+                            <path d="M15 18L9 12L15 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
 
                     <button id="simple-testimonials-next" aria-label="Siguiente"
-                        class="absolute right-0 xl:-right-16 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#4889eb]">
+                        class="absolute right-0 xl:-right-6 top-1/2 -translate-y-1/2 z-10 bg-[#1a1a1a] hover:bg-[#2a2a2a] rounded-full p-3 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#4889eb]">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="#000" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
+                            <path d="M9 18L15 12L9 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
 
-                    <div id="simple-testimonials-carousel" class="overflow-hidden cursor-grab">
+                    <div id="simple-testimonials-carousel" class="overflow-hidden cursor-grab mx-8 xl:mx-0">
                         <div class="testimonials-track flex transition-transform duration-300 ease-out">
+                            
                             <!-- Card 1 -->
-                            <div
-                                class="testimonial-card flex-shrink-0 w-full xl:w-[520px] bg-white border border-gray-200 rounded-2xl shadow-sm p-6 mr-6">
-                                <h3 class="text-xl font-light text-[#4889eb] mb-2">Compromiso, proactividad y
-                                    resolución</h3>
-                                <p class="text-gray-700 mb-6">
-                                    Su continua aportación, sus conocimientos, su experiencia y sus ganas por hacer
-                                    que la marca crezca les han convertido en partners fundamentales para el
-                                    crecimiento de negocio online, la estrategia de marketing digital y nuestra
-                                    inversión en medios publicitarios.
+                            <div class="testimonial-card flex-shrink-0 w-full xl:w-[480px] bg-gradient-to-br from-[#141416] to-[#000000] border border-[#2a2a2a] rounded-2xl p-6 mr-6">
+                                <h3 class="text-lg xl:text-2xl font-semibold text-white mb-3 leading-snug">
+                                    Compromiso, proactividad y resolución
+                                </h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                    Su continua aportación, sus conocimientos, su experiencia y sus ganas por hacer que la marca crezca les han convertido en partners fundamentales para el crecimiento de negocio online, la estrategia de marketing digital y nuestra inversión en medios publicitarios.
                                 </p>
-                                <div class="flex items-center gap-3">
-                                    <img src="/imgs/bobo-logo.svg" alt="Logo de Bobo Choses"
-                                        class="h-16 w-16 object-contain" />
-                                    <div>
-                                        <p class="text-gray-900 font-semibold">AINARA SIMÓN</p>
-                                        <p class="text-gray-600">Chief Digital Manager, Bobo Choses</p>
+                                <div class="flex items-center justify-between border-t border-[#2a2a2a] pt-4">
+                                    <div class="flex items-center gap-2">
+                                        <img src="/imgs/bobo-logo.svg" alt="Logo de Bobo Choses" class="h-10 w-20 object-contain p-1 brightness-0 invert" />
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <img src="/imgs/bobo-testi.avif" alt="Logo de Bobo Choses" class="h-10 w-10 rounded-full object-contain bg-white/10 p-1" />
+                                        <div class="text-right">
+                                            <p class="text-white font-semibold text-sm">AINARA SIMÓN</p>
+                                            <p class="text-gray-500 text-xs">Chief Digital Manager</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Card 2 -->
-                            <div
-                                class="testimonial-card flex-shrink-0 w-full xl:w-[520px] bg-white border border-gray-200 rounded-2xl shadow-sm p-6 mr-6">
-                                <h3 class="text-xl font-light text-[#4889eb] mb-2">Compromiso, proactividad y
-                                    resolución</h3>
-                                <p class="text-gray-700 mb-6">
-                                    Su continua aportación, sus conocimientos, su experiencia y sus ganas por hacer
-                                    que la marca crezca les han convertido en partners fundamentales para el
-                                    crecimiento de negocio online, la estrategia de marketing digital y nuestra
-                                    inversión en medios publicitarios.
+                            <div class="testimonial-card flex-shrink-0 w-full xl:w-[480px] bg-gradient-to-br from-[#141416] to-[#000000] border border-[#2a2a2a] rounded-2xl p-6 mr-6">
+                                <h3 class="text-lg xl:text-2xl font-semibold text-white mb-3 leading-snug">
+                                    Descubrimos gracias a una recomendación.
+                                </h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                    Lo que realmente nos impresionó fue su enfoque en nuestro potencial de crecimiento más que en sus honorarios. Cuentan con un equipo especializado y bien coordinado, ofreciendo un servicio excepcional y orientado a resultados, totalmente alineado con nuestros objetivos.
                                 </p>
-                                <div class="flex items-center gap-3">
-                                    <img src="/imgs/bobo-logo.svg" alt="Logo de Bobo Choses"
-                                        class="h-16 w-16  object-contain" />
-                                    <div>
-                                        <p class="text-gray-900 font-semibold">AINARA SIMÓN</p>
-                                        <p class="text-gray-600">Chief Digital Manager, Bobo Choses</p>
+                                <div class="flex items-center justify-between border-t border-[#2a2a2a] pt-4">
+                                    <div class="flex items-center gap-2">
+                                        <img src="/imgs/mun-logo.png" alt="Logo de Mun Kombucha" class="h-10 w-30 object-contain p-1 brightness-0 invert" />
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <img src="/imgs/mun-testi.png" alt="Logo de Mun Kombucha" class="h-10 w-10 rounded-full object-contain bg-white/10 p-1" />
+                                        <div class="text-right">
+                                            <p class="text-white font-semibold text-sm">JORDI DALMAU</p>
+                                            <p class="text-gray-500 text-xs">CEO</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Card 3 -->
-                            <div
-                                class="testimonial-card flex-shrink-0 w-full xl:w-[520px] bg-white border border-gray-200 rounded-2xl shadow-sm p-6">
-                                <h3 class="text-xl font-light text-[#4889eb] mb-2">Compromiso, proactividad y
-                                    resolución</h3>
-                                <p class="text-gray-700 mb-6">
-                                    Su continua aportación, sus conocimientos, su experiencia y sus ganas por hacer
-                                    que la marca crezca les han convertido en partners fundamentales para el
-                                    crecimiento de negocio online, la estrategia de marketing digital y nuestra
-                                    inversión en medios publicitarios.
+                            <div class="testimonial-card flex-shrink-0 w-full xl:w-[480px] bg-gradient-to-br from-[#141416] to-[#000000] border border-[#2a2a2a] rounded-2xl p-6">
+                                <h3 class="text-lg xl:text-2xl font-semibold text-white mb-3 leading-snug">
+                                    Es como tener al equipo dentro de casa.
+                                </h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                    Son súper proactivos, están siempre detrás ofreciendo soluciones. Son un complemento perfecto y están totalmente integrados en el desarrollo de todos nuestros proyectos. Muchas gracias!
                                 </p>
-                                <div class="flex items-center gap-3">
-                                    <img src="/imgs/bobo-logo.svg" alt="Logo de Bobo Choses"
-                                        class="h-16 w-16  object-contain" />
-                                    <div>
-                                        <p class="text-gray-900 font-semibold">AINARA SIMÓN</p>
-                                        <p class="text-gray-600">Chief Digital Manager, Bobo Choses</p>
+                                <div class="flex items-center justify-between border-t border-[#2a2a2a] pt-4">
+                                    <div class="flex items-center gap-2">
+                                        <img src="/imgs/angela-logo-dark.png" alt="Logo de Mun Kombucha" class="h-10 w-30 object-contain p-1 brightness-0 invert" />
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <img src="/imgs/angela-testi.png" alt="Logo de Angela Navarro" class="h-10 w-10 rounded-full object-contain bg-white/10 p-1" />
+                                        <div class="text-right">
+                                            <p class="text-white font-semibold text-sm">BEA GUERRERO</p>
+                                            <p class="text-gray-500 text-xs">Directora</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
     <!-- Sección Principal de Contacto -->
-    <section class="w-full relative pt-2 pb-20 px-4 sm:px-8 xl:px-12 max-w-[1800px] mx-auto">
+    <section class="w-full relative pt-2 pb-20 px-4 sm:px-8 xl:px-12 mx-auto bg-black">
         <!-- Grid ajustado: en XL el calendario ocupa más espacio (col-span-2 vs col-span-3) -->
         <div class="grid grid-cols-1 xl:grid-cols-5 gap-12 items-start">
 
             <!-- Columna Izquierda: Textos (Ocupa 2 de 5 columnas en XL) -->
             <div class="justify-center xl:h-full xl:col-span-2 flex flex-col gap-8 pt-4 xl:sticky xl:top-32 px-2">
-                <h1 class="text-3xl sm:text-2xl lg:text-4xl font-black text-black">
+                <h1 class="text-3xl sm:text-2xl lg:text-4xl font-black text-white">
                     Eleva tu marca al<br class="hidden xl:block"> siguiente nivel
                 </h1>
 
-                <div class="flex flex-col gap-6 text-lg sm:text-xl text-gray-800 font-light leading-relaxed w-10/12">
+                <div class="flex flex-col gap-6 text-lg sm:text-xl text-white font-light leading-relaxed w-10/12">
                     <p>
                         Y comienza a experimentar resultados excepcionales.
                     </p>
@@ -844,7 +846,7 @@
 
             <!-- Columna Derecha: Calendly -->
             <div class="xl:col-span-3 w-full flex justify-center xl:justify-end overflow-x-auto">
-                <div class="w-full bg-white rounded-2xl shadow-sm overflow-hidden relative xl:min-w-[1060px]">
+                <div class="w-full bg-black rounded-2xl shadow-sm overflow-hidden relative xl:min-w-[1060px]">
                     <!-- Widget de Calendly -->
                     <!-- URL LIMPIA: Sin hide_event_type_details=1 -->
                     <div class="calendly-inline-widget w-full"

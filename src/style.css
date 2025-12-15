@@ -1064,3 +1064,34 @@ html {
     .animation-delay-4000 {
         animation-delay: 4s;
     }
+
+    /* Intense Blob Animation for History Page */
+    @keyframes blob-intense {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(150px, -200px) scale(1.2); }
+        66% { transform: translate(-120px, 120px) scale(0.8); }
+        100% { transform: translate(0px, 0px) scale(1); }
+    }
+    
+    .animate-blob-intense {
+        animation: blob-intense 10s infinite;
+    }
+
+/* Brands Carousel - Infinite Scroll Animation */
+@keyframes scroll-brands {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-scroll-brands {
+    animation: scroll-brands 30s linear infinite;
+    width: max-content;
+}
+
+.animate-scroll-brands:hover {
+    animation-play-state: paused;
+}
