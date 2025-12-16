@@ -1185,7 +1185,10 @@ function initImmoralEcosystem() {
         const bg = section.querySelector(`[data-bg="${target}"]`);
         const body = item.querySelector('.brand-body');
         const header = item.querySelector('.brand-header');
+        const logo = item.querySelector('img'); // New: Target logic on image
         
+        const light = item.querySelector('.brand-light');
+
         // --- HOVER EFFECT: OPEN & SHOW ---
         item.addEventListener('mouseenter', () => {
             // 1. Mostrar Fondo
@@ -1197,10 +1200,16 @@ function initImmoralEcosystem() {
                 body.classList.remove('grid-rows-[0fr]');
                 body.classList.add('grid-rows-[1fr]');
             }
-            // 3. Resaltar Header
-            if (header) {
-                header.classList.remove('opacity-50');
-                header.classList.add('opacity-100');
+            // 3. Resaltar Logo (antes Header)
+            if (logo) {
+                logo.classList.remove('opacity-50');
+                logo.classList.add('opacity-100');
+            }
+             // 4. Encender Luz (Glow)
+             if (light) {
+                light.classList.remove('animate-pulse');
+                // Ensure pure opacity 1 and glow
+                light.classList.add('opacity-100', 'shadow-[0_0_10px_rgba(255,255,255,0.8)]', 'scale-125');
             }
         });
 
@@ -1215,10 +1224,16 @@ function initImmoralEcosystem() {
                 body.classList.remove('grid-rows-[1fr]');
                 body.classList.add('grid-rows-[0fr]');
             }
-            // 3. Atenuar Header
-            if (header) {
-                header.classList.remove('opacity-100');
-                header.classList.add('opacity-50');
+            // 3. Atenuar Logo (antes Header)
+            if (logo) {
+                logo.classList.remove('opacity-100');
+                logo.classList.add('opacity-50');
+            }
+            // 4. Apagar Luz (Volver a Pulse)
+            if (light) {
+                light.classList.add('animate-pulse');
+                // Remove glow and fixed opacity, let pulse handle it (pulse oscillates opacity)
+                light.classList.remove('opacity-100', 'shadow-[0_0_10px_rgba(255,255,255,0.8)]', 'scale-125');
             }
         });
     });
