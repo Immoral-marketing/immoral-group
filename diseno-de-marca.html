@@ -348,7 +348,9 @@
 
     <!-- Video Section (Scrolls over Hero) -->
     <section class="relative w-full h-screen z-10 mt-[100vh] bg-black">
-        <video src="/imgs/showreel.mp4" autoplay muted loop playsinline class="w-full h-full object-cover"></video>
+        <iframe src="https://kinescope.io/embed/p2tK93aqfC5T21VRAGwd2z"
+            allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
+            frameborder="0" allowfullscreen width="1920" height="1080"></iframe>
     </section>
 
     <!-- Services Grid Section -->
@@ -822,56 +824,6 @@
             </div>
         </article>
     </section>
-
-    <script>
-        function toggleAccordion(element, index) {
-            const allPanels = document.querySelectorAll('.accord-panel');
-
-            allPanels.forEach(panel => {
-                // Deactivate all
-                panel.classList.remove('active', 'flex-grow-[6]', 'md:w-[64%]');
-                panel.classList.add('flex-grow', 'md:w-[12%]');
-
-                // Hide expanded content
-                panel.querySelectorAll('.expanded-content').forEach(content => {
-                    content.classList.add('opacity-0', 'hidden');
-                    content.classList.remove('opacity-100');
-                });
-
-                // Show collapsed content
-                const collapsed = panel.querySelector('.collapsed-content');
-                if (collapsed) {
-                    collapsed.classList.remove('opacity-0');
-                    collapsed.classList.add('opacity-100');
-                }
-            });
-
-            // Activate clicked
-            element.classList.remove('flex-grow', 'md:w-[12%]');
-            element.classList.add('active', 'flex-grow-[6]', 'md:w-[64%]');
-
-            // Show expanded content
-            element.querySelectorAll('.expanded-content').forEach(content => {
-                content.classList.remove('hidden');
-                setTimeout(() => {
-                    content.classList.remove('opacity-0');
-                    content.classList.add('opacity-100');
-                }, 50);
-            });
-
-            // Hide collapsed content
-            const collapsed = element.querySelector('.collapsed-content');
-            if (collapsed) {
-                collapsed.classList.remove('opacity-100');
-                collapsed.classList.add('opacity-0');
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const firstItem = document.querySelector('.accord-panel');
-            if (firstItem) toggleAccordion(firstItem, 1);
-        });
-    </script>
 
     <!-- Section: Impacto Real (KPIs) -->
     <section class="bg-white py-24 px-6 md:px-12 relative z-10">
