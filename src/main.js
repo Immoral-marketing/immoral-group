@@ -1,5 +1,7 @@
 import './style.css'
 import { initLoader } from './loader.js';
+import { initHeroAnimation } from './hero-animation.js';
+import { initFAQAccordion } from './faq-accordion.js';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -7,6 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Initialize Loader
 initLoader();
+
+// Initial Hero Animation setup
+document.addEventListener("DOMContentLoaded", () => {
+    initHeroAnimation();
+});
 
 function initDropdowns() {
     const setupDropdown = (btnId, dropdownId) => {
@@ -64,12 +71,12 @@ function initMenu() {
             if (mobileMenuOverlay) {
                 mobileMenuOverlay.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
-                
-                gsap.fromTo(mobileMenuOverlay, 
-                    { opacity: 0 }, 
+
+                gsap.fromTo(mobileMenuOverlay,
+                    { opacity: 0 },
                     { opacity: 1, duration: 0.3, ease: "power2.out" }
                 );
-                
+
                 const menuItems = mobileMenuOverlay.querySelectorAll('.border-b, a[href="#"]');
                 gsap.fromTo(menuItems,
                     { opacity: 0, y: 20 },
@@ -143,9 +150,11 @@ function initMenu() {
                     const fullHeight = targetSubmenu.scrollHeight;
                     gsap.fromTo(targetSubmenu,
                         { height: 0, opacity: 0 },
-                        { height: fullHeight, opacity: 1, duration: 0.4, ease: "power2.out", onComplete: () => {
-                            targetSubmenu.style.height = 'auto';
-                        }}
+                        {
+                            height: fullHeight, opacity: 1, duration: 0.4, ease: "power2.out", onComplete: () => {
+                                targetSubmenu.style.height = 'auto';
+                            }
+                        }
                     );
                     newBtn.setAttribute('aria-expanded', 'true');
                     if (arrow) {
@@ -170,7 +179,7 @@ function initMenu() {
                     // Caso: Empieza Blanco -> Scroll -> Fondo Blur Negro, Mantiene Blanco
                     nav.classList.add('backdrop-blur-md', 'bg-black/70', 'shadow-sm');
                     nav.classList.remove('bg-transparent');
-                    
+
                     // Asegurar elementos blancos
                     logoImg.src = '/imgs/Menues/logo-menu-claro.png';
                     navLinksContainer.classList.add('text-white');
@@ -205,24 +214,24 @@ function initMenu() {
     }
 
     // FIX: Cerrar menú al hacer click en cualquier link
-const menuLinks = mobileMenuOverlay?.querySelectorAll('a[href]:not([data-target])');
-if (menuLinks) {
-    menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (mobileMenuOverlay && !mobileMenuOverlay.classList.contains('hidden')) {
-                gsap.to(mobileMenuOverlay, {
-                    opacity: 0,
-                    duration: 0.25,
-                    ease: "power2.in",
-                    onComplete: () => {
-                        mobileMenuOverlay.classList.add('hidden');
-                        document.body.style.overflow = '';
-                    }
-                });
-            }
+    const menuLinks = mobileMenuOverlay?.querySelectorAll('a[href]:not([data-target])');
+    if (menuLinks) {
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenuOverlay && !mobileMenuOverlay.classList.contains('hidden')) {
+                    gsap.to(mobileMenuOverlay, {
+                        opacity: 0,
+                        duration: 0.25,
+                        ease: "power2.in",
+                        onComplete: () => {
+                            mobileMenuOverlay.classList.add('hidden');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                }
+            });
         });
-    });
-}
+    }
 }
 
 // --- 3. FUNCIÓN CÓMO LO HACEMOS ---
@@ -974,12 +983,12 @@ function initHeroPhysics() {
     const WALL_THICKNESS = 60;
     // Detectar si es mobile
     const isMobile = window.innerWidth < 768;
-    
+
     // Tamaños más pequeños en mobile
     const TEAM_CIRCLE_SIZE_MIN = isMobile ? 50 : 90;
     const TEAM_CIRCLE_SIZE_MAX = isMobile ? 70 : 130;
     const DOT_SIZE = isMobile ? 15 : 25;
-    
+
     const TEAM_IMAGES = ['/imgs/port1.png', '/imgs/port2.png', '/imgs/port3.png', '/imgs/port4.png'];
     const DOT_COLORS = ['#3B82F6', '#67E8F9'];
 
@@ -1179,21 +1188,21 @@ function initImmoralEcosystem() {
     const items = section.querySelectorAll('.brand-item');
     const bgImages = section.querySelectorAll('[data-bg]');
     const defaultBg = section.querySelector('[data-bg="default"]');
-    
+
     items.forEach(item => {
         const target = item.dataset.target;
         const bg = section.querySelector(`[data-bg="${target}"]`);
         const body = item.querySelector('.brand-body');
         const header = item.querySelector('.brand-header');
         const logo = item.querySelector('img'); // New: Target logic on image
-        
+
         const light = item.querySelector('.brand-light');
 
         // --- HOVER EFFECT: OPEN & SHOW ---
         item.addEventListener('mouseenter', () => {
             // 1. Mostrar Fondo
             bgImages.forEach(img => img.classList.add('opacity-0'));
-            if(bg) bg.classList.remove('opacity-0');
+            if (bg) bg.classList.remove('opacity-0');
 
             // 2. Abrir Descripción (Accordion)
             if (body) {
@@ -1205,8 +1214,8 @@ function initImmoralEcosystem() {
                 logo.classList.remove('opacity-50');
                 logo.classList.add('opacity-100');
             }
-             // 4. Encender Luz (Glow)
-             if (light) {
+            // 4. Encender Luz (Glow)
+            if (light) {
                 light.classList.remove('animate-pulse');
                 // Ensure pure opacity 1 and glow
                 light.classList.add('opacity-100', 'shadow-[0_0_10px_rgba(255,255,255,0.8)]', 'scale-125');
@@ -1217,7 +1226,7 @@ function initImmoralEcosystem() {
         item.addEventListener('mouseleave', () => {
             // 1. Resetear Fondo a Negro (Default)
             bgImages.forEach(img => img.classList.add('opacity-0'));
-            if(defaultBg) defaultBg.classList.remove('opacity-0');
+            if (defaultBg) defaultBg.classList.remove('opacity-0');
 
             // 2. Cerrar Descripción
             if (body) {
@@ -1251,7 +1260,7 @@ function initCounters() {
                 toggleActions: "play none none none"
             }
         });
-        
+
         const obj = { val: 0 };
         tl.to(obj, {
             val: target,
@@ -1290,6 +1299,8 @@ function initAll() {
     initCounters();
     initScrollAnimations();
     initGsapAnimations();
+    initHeroAnimation();
+    initFAQAccordion();
 }
 
 // --- 16. GSAP ANIMATIONS ---
@@ -1393,7 +1404,7 @@ function initGsapAnimations() {
     // IMPORTANTE: Esperamos a que las fuentes estén listas para calcular las líneas correctamente.
     // Esto evita que el texto se rompa mal y funciona perfecto con View Transitions.
     document.fonts.ready.then(() => {
-        
+
         // 1. Block Reveal Animation (Lando Norris style)
         const blockRevealElements = document.querySelectorAll('.block-reveal');
 
@@ -1561,11 +1572,11 @@ function initGsapAnimations() {
         lineRevealElements.forEach(element => {
             // Reiniciamos el contenido si ya se había dividido (para recalcular bien al cambiar de página o redimensionar)
             if (element.classList.contains('lines-split-done')) {
-                 // Opcional: Si quisieras recalcular en resize, podrías limpiar aquí. 
-                 // Por ahora, asumimos que si ya está hecho, está bien, PERO como estamos esperando a las fuentes,
-                 // es seguro que el cálculo inicial será correcto.
+                // Opcional: Si quisieras recalcular en resize, podrías limpiar aquí. 
+                // Por ahora, asumimos que si ya está hecho, está bien, PERO como estamos esperando a las fuentes,
+                // es seguro que el cálculo inicial será correcto.
             }
-            
+
             if (!element.classList.contains('lines-split-done')) {
                 element.style.visibility = 'hidden'; // Hide initially
                 splitTextIntoLines(element);
@@ -1595,7 +1606,7 @@ function initGsapAnimations() {
                 });
             }
         });
-        
+
         // Refrescamos ScrollTrigger para asegurar que las posiciones sean correctas después de cargar fuentes
         ScrollTrigger.refresh();
     });
@@ -1610,7 +1621,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('click', async (e) => {
     const link = e.target.closest('a');
     if (!link) return;
-    
+
     // Ignorar links externos, ctrl+click, target blank o anclas
     if (link.hostname !== window.location.hostname || e.ctrlKey || link.target === '_blank' || link.href.includes('#')) return;
 
@@ -1622,7 +1633,7 @@ document.addEventListener('click', async (e) => {
         const text = await response.text();
         const parser = new DOMParser();
         const newDoc = parser.parseFromString(text, 'text/html');
-        
+
         // Eliminar loader si existe en el nuevo documento para evitar que aparezca de nuevo
         const newLoader = newDoc.getElementById('global-loader');
         if (newLoader) newLoader.remove();
@@ -1654,7 +1665,7 @@ window.addEventListener('popstate', async () => {
         const text = await response.text();
         const parser = new DOMParser();
         const newDoc = parser.parseFromString(text, 'text/html');
-        
+
         const newLoader = newDoc.getElementById('global-loader');
         if (newLoader) newLoader.remove();
 
@@ -1676,12 +1687,12 @@ window.addEventListener('popstate', async () => {
 function updateDOM(newDoc, url, doPushState = true) {
     document.body.innerHTML = newDoc.body.innerHTML;
     document.title = newDoc.title;
-    
+
     // Solo hacemos pushState si es una navegación nueva (click), no si es volver atrás (popstate)
     if (doPushState) {
         history.pushState({}, '', url);
     }
-    
+
     // Scroll al inicio
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.documentElement.scrollTop = 0;
