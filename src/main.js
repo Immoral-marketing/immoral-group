@@ -761,6 +761,62 @@ function initStackingCards() {
 
     window.addEventListener('scroll', () => requestAnimationFrame(updateCardsOnScroll));
     updateCardsOnScroll();
+    updateCardsOnScroll();
+}
+
+// --- 10.5. FUNCIÓN GESTION HERO SCROLL ---
+function initGestionHero() {
+    // Solo ejecutar si existe el elemento en el DOM actual
+    if (!document.getElementById("hero-pin")) return;
+
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+        // Horizontal Scroll only on Desktop
+        let heroContent = document.getElementById("hero-content");
+
+        if (heroContent) {
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#hero-pin",
+                    pin: true,
+                    scrub: 1,
+                    snap: 0,
+                    end: "+=2000"
+                }
+            });
+
+            tl.to(heroContent, {
+                xPercent: -50,
+                ease: "none",
+            }, 0); // Start at time 0
+
+            let heroBg = document.getElementById("hero-bg");
+            if (heroBg) {
+                tl.to(heroBg, {
+                    xPercent: -50, // Move background with content
+                    ease: "none",
+                }, 0); // Sync with content
+            }
+        }
+    });
+
+    // Add floating animation CSS if not exists
+    if (!document.getElementById('gestion-hero-styles')) {
+        const style = document.createElement('style');
+        style.id = 'gestion-hero-styles';
+        style.textContent = `
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-20px); }
+                100% { transform: translateY(0px); }
+            }
+            .animate-float-slow { animation: float 6s ease-in-out infinite; }
+            .animate-float-medium { animation: float 5s ease-in-out infinite; }
+            .animate-float-fast { animation: float 4s ease-in-out infinite; }
+        `;
+        document.head.appendChild(style);
+    }
 }
 
 // --- 11. SERVICE EVENTS ---
@@ -1301,6 +1357,7 @@ function initAll() {
     initGsapAnimations();
     initHeroAnimation();
     initFAQAccordion();
+    initGestionHero();
 }
 
 // --- 16. GSAP ANIMATIONS ---
