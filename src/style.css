@@ -1095,3 +1095,21 @@ html {
 .animate-scroll-brands:hover {
     animation-play-state: paused;
 }
+
+/* Email Marketing Services Infinite Scroll */
+@keyframes scroll-up {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+.services-scroll-container {
+    animation: scroll-up 25s linear infinite;
+}
+
+.services-scroll-container:hover {
+    animation-play-state: paused;
+}

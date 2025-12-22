@@ -13,6 +13,8 @@ initLoader();
 // Initial Hero Animation setup
 document.addEventListener("DOMContentLoaded", () => {
     initHeroAnimation();
+    initEmailHero();
+    initServicesCarousel();
 });
 
 function initDropdowns() {
@@ -1329,10 +1331,178 @@ function initCounters() {
     });
 }
 
+// --- EMAIL HERO ANIMATION ---
+function initEmailHero() {
+    const section = document.querySelector('.email-hero-section');
+    if (!section) return;
+
+    const bg1 = section.querySelector('.bg-image-1');
+    const bg2 = section.querySelector('.bg-image-2');
+    if (!bg1 || !bg2) return;
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+        }
+    });
+
+    tl.to(bg1, {
+        opacity: 0,
+        scale: 1.1,
+        duration: 1,
+        ease: "none"
+    }, 0)
+        .to(bg2, {
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+            ease: "none"
+        }, 0);
+
+    gsap.set(bg2, { scale: 1.1 });
+}
+
+// --- SERVICES CAROUSEL ---
+function initServicesCarousel() {
+    const container = document.querySelector('.services-scroll-container');
+    if (!container) return;
+
+    const wrapper = container.parentElement;
+
+    // Check if already initialized
+    if (container.dataset.initialized === 'true') return;
+    container.dataset.initialized = 'true';
+
+    const originalContent = container.innerHTML;
+    container.innerHTML = originalContent + originalContent;
+
+    const originalHeight = container.scrollHeight / 2;
+
+    let isDragging = false;
+    let startY = 0;
+    let scrollOffset = 0;
+    let currentOffset = 0;
+    let velocity = 0;
+    let lastY = 0;
+    let lastTime = Date.now();
+    let isAutoScrolling = true;
+
+    function wrapPosition(offset) {
+        if (offset < -originalHeight) return offset + originalHeight;
+        if (offset > 0) return offset - originalHeight;
+        return offset;
+    }
+
+    function setPosition(offset) {
+        currentOffset = wrapPosition(offset);
+        container.style.transform = `translateY(${currentOffset}px)`;
+    }
+
+    const autoScrollSpeed = -0.5;
+
+    function autoScroll() {
+        if (isAutoScrolling && !isDragging) {
+            currentOffset = wrapPosition(currentOffset + autoScrollSpeed);
+            container.style.transform = `translateY(${currentOffset}px)`;
+        }
+        requestAnimationFrame(autoScroll);
+    }
+
+    container.style.animation = 'none';
+    autoScroll();
+
+    wrapper.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        isAutoScrolling = false;
+        startY = e.clientY;
+        scrollOffset = currentOffset;
+        wrapper.style.cursor = 'grabbing';
+        lastY = e.clientY;
+        lastTime = Date.now();
+        velocity = 0;
+        e.preventDefault();
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const deltaY = e.clientY - startY;
+        const newOffset = scrollOffset + deltaY;
+        const now = Date.now();
+        const dt = now - lastTime;
+        if (dt > 0) velocity = (e.clientY - lastY) / dt * 15;
+        lastY = e.clientY;
+        lastTime = now;
+        setPosition(newOffset);
+        e.preventDefault();
+    });
+
+    window.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        wrapper.style.cursor = 'grab';
+        let momentumVelocity = velocity;
+        function applyMomentum() {
+            if (Math.abs(momentumVelocity) > 0.5) {
+                currentOffset = wrapPosition(currentOffset + momentumVelocity);
+                container.style.transform = `translateY(${currentOffset}px)`;
+                momentumVelocity *= 0.95;
+                requestAnimationFrame(applyMomentum);
+            } else {
+                setTimeout(() => { isAutoScrolling = true; }, 500);
+            }
+        }
+        applyMomentum();
+    });
+
+    wrapper.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        isAutoScrolling = false;
+        startY = e.touches[0].clientY;
+        scrollOffset = currentOffset;
+        lastY = e.touches[0].clientY;
+        lastTime = Date.now();
+        velocity = 0;
+    }, { passive: true });
+
+    wrapper.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const deltaY = e.touches[0].clientY - startY;
+        const newOffset = scrollOffset + deltaY;
+        const now = Date.now();
+        const dt = now - lastTime;
+        if (dt > 0) velocity = (e.touches[0].clientY - lastY) / dt * 15;
+        lastY = e.touches[0].clientY;
+        lastTime = now;
+        setPosition(newOffset);
+    }, { passive: true });
+
+    wrapper.addEventListener('touchend', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        let momentumVelocity = velocity;
+        function applyMomentum() {
+            if (Math.abs(momentumVelocity) > 0.5) {
+                currentOffset = wrapPosition(currentOffset + momentumVelocity);
+                container.style.transform = `translateY(${currentOffset}px)`;
+                momentumVelocity *= 0.95;
+                requestAnimationFrame(applyMomentum);
+            } else {
+                setTimeout(() => { isAutoScrolling = true; }, 500);
+            }
+        }
+        applyMomentum();
+    });
+
+    wrapper.addEventListener('mouseenter', () => { if (!isDragging) isAutoScrolling = false; });
+    wrapper.addEventListener('mouseleave', () => { if (!isDragging) isAutoScrolling = true; });
+    wrapper.style.cursor = 'grab';
+}
+
 // --- INICIALIZACIÓN GLOBAL ---
 function initAll() {
-    // FIX GLOBAL: Desactivamos la restauración automática del scroll para SIEMPRE.
-    // Esto obliga al navegador a obedecer nuestros comandos de scroll manuales.
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
@@ -1358,6 +1528,8 @@ function initAll() {
     initHeroAnimation();
     initFAQAccordion();
     initGestionHero();
+    initEmailHero();
+    initServicesCarousel();
 }
 
 // --- 16. GSAP ANIMATIONS ---
