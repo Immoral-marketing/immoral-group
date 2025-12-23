@@ -11,22 +11,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 </head>
 
-<body class="bg-white overflow-visible">
-    <!-- Menú Light -->
-    <nav class="hidden xl:flex justify-between fixed inset-x-0 box-border px-10 pt-5 pb-5 font-black text-xs z-[100]">
+<body class="bg-black overflow-visible">
+    <!-- Menu oscuro -->
+    <nav
+        class="hidden xl:flex justify-between fixed inset-x-0 box-border px-10 pt-5 pb-5 font-black text-xs z-[100] top-0">
         <a href="index.html">
-            <div><img src="/imgs/Menues/logo-menu-oscuro.png" alt=""></div>
+            <div><img src="/imgs/Menues/logo-menu-claro.png" alt=""></div>
         </a>
         <div>
-            <div class="list-none flex flex-row items-center gap-12 text-black">
+            <div class="list-none flex flex-row items-center gap-12 text-white">
 
-                <div class="w-35 items-center flex flex-col relative" id="dropdownButton">
+                <div class="w-auto items-center flex flex-col relative" id="dropdownButton">
                     <div class="uppercase flex flex-row gap-3 justify-center" id="button">Quiénes Somos
-                        <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3 invert">
+                        <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3">
                     </div>
-                    <div class="mt-3 absolute left-0 top-full z-[100] w-50 hidden font-medium text-sm capitalize transition-all ease-out duration-300"
+                    <div class="mt-3 absolute left-0 top-full z-40 w-40 hidden font-medium text-sm transition-all ease-out duration-300"
                         id="dropdown">
-                        <ul class="flex flex-col bg-[#f7f7f7] text-black">
+                        <ul class="flex flex-col bg-[#f7f7f7] text-white">
                             <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
                             <a href="nuestra-historia.html">
                                 <li
@@ -52,9 +53,9 @@
 
                 <div class="w-30 items-center flex flex-col relative" id="dropdownButton2">
                     <div class="uppercase flex flex-row gap-3 justify-center" id="button2">Servicios
-                        <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3 invert">
+                        <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3">
                     </div>
-                    <div class="mt-3 absolute left-1/2 -translate-x-1/2 top-full z-[100] hidden w-52 font-medium text-sm capitalize transition-all ease-out duration-300"
+                    <div class="mt-3 absolute left-1/2 -translate-x-1/2 top-full z-40 hidden w-52 font-medium text-sm transition-all ease-out duration-300"
                         id="dropdown2">
                         <ul class="flex flex-col bg-[#f7f7f7] text-black">
                             <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
@@ -99,9 +100,9 @@
                 </div>
                 <div class="w-30 items-center flex flex-col relative" id="dropdownButton3">
                     <div class="uppercase flex flex-row gap-3 justify-center" id="button3">Verticales
-                        <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3 invert">
+                        <img src="/imgs/Menues/arrowDown.svg" alt="arrowDown" class="w-3">
                     </div>
-                    <div class="mt-3 absolute left-0 top-full z-[100] hidden w-max font-medium capitalize transition-all ease-out duration-300"
+                    <div class="mt-3 absolute left-0 top-full z-40 hidden w-max font-medium capitalize transition-all ease-out duration-300"
                         id="dropdown3">
                         <ul class="flex flex-col bg-[#f7f7f7] text-black">
                             <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
@@ -147,19 +148,18 @@
             </div>
         </div>
     </nav>
-
     <!-- Mobile/Tablet Header (visible solo en móvil y tablet) -->
-    <div class="bg-white xl:hidden fixed top-0 inset-x-0 z-50 box-border w-full flex items-center justify-between px-4 py-4"
+    <div class="bg-black xl:hidden fixed top-0 inset-x-0 z-50 box-border w-full flex items-center justify-between px-4 py-4"
         style="padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right);">
-        <a href="index.html"><img src="/imgs/Menues/logo-menu-oscuro.svg" alt="immoral" class="ml-4 h-6 w-auto"></a>
+        <a href="index.html"><img src="/imgs/Menues/logo-menu-oscuro.svg" alt="immoral"
+                class="ml-4 h-6 w-auto invert"></a>
         <button id="mobileMenuOpenBtn" aria-label="Abrir menú"
-            class="p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+            class="invert p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 6h16M4 12h16M4 18h16" stroke="#000" stroke-width="2" stroke-linecap="round" />
             </svg>
         </button>
     </div>
-
     <!-- Overlay del Menú Móvil/Tablet -->
     <div id="mobileMenuOverlay"
         class="xl:hidden fixed inset-0 bg-white z-[60] hidden overflow-y-auto overflow-x-hidden">
@@ -227,9 +227,8 @@
                         <ul class="flex flex-col bg-[#f7f7f7] text-black rounded-md overflow-hidden text-center">
                             <div class="w-full h-1 bg-gradient-to-r from-blue-300 via-blue-400 to-blue-700"></div>
                             <a href="publicidad-en-medios.html">
-                                <li
-                                    class="py-4 px-5 border-b border-gray-300 hover:bg-blue-50 hover:text-blue-600 transition">
-                                    Publicidad en medios</li>
+                                <li class="py-4 px-5 hover:bg-blue-50 hover:text-blue-600 transition">Publicidad en
+                                    medios</li>
                             </a>
                             <a href="diseno-de-marca.html">
                                 <li
@@ -316,22 +315,21 @@
         </div>
     </div>
 
-    <!-- Sección En Construcción -->
     <!-- Email Marketing Hero Section -->
     <section class="email-hero-section relative w-full" style="height: 200vh;">
 
         <!-- Sticky Background Container -->
-        <div class="sticky top-0 left-0 w-full h-screen overflow-hidden -z-10">
+        <div class="sticky top-0 left-0 w-full h-screen overflow-hidden -z-10 bg-black">
             <!-- Background 1 -->
-            <img src="imgs/mail-bg-1.webp" alt="Background 1"
+            <img src="imgs/mail-bg-3.webp" alt="Background 1"
                 class="bg-image-1 absolute inset-0 w-full h-full object-cover origin-center">
 
             <!-- Background 2 -->
-            <img src="imgs/mail-bg-2.webp" alt="Background 2"
+            <img src="imgs/mail-bg-4.webp" alt="Background 2"
                 class="bg-image-2 absolute inset-0 w-full h-full object-cover origin-center opacity-0">
 
             <!-- Gradient Overlay (Optional, for text readability) -->
-            <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-black/0 pointer-events-none"></div>
         </div>
 
         <!-- Content Container (Pulled up to overlap background) -->
@@ -340,15 +338,15 @@
             <!-- Screen 1 Content (Centered) -->
             <div class="h-screen w-full flex flex-col items-center justify-center text-center px-6">
                 <!-- Top Label -->
-                <p class="text-sm md:text-base font-light text-black mb-4 uppercase tracking-wider">
+                <p class="text-sm md:text-base font-light text-white mb-4 uppercase tracking-wider">
                     Email Marketing Automation & Embudos de Venta:
                 </p>
 
                 <!-- Main Title -->
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-black leading-tight mb-2">
+                <h1 class="text-5xl md:text-7xl lg:text-7xl font-black text-white leading-tight mb-2">
                     Mensajes que <span class="text-blue-600">Conectan.</span>
                 </h1>
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-black leading-tight">
+                <h1 class="text-5xl md:text-7xl lg:text-7xl font-black text-white leading-tight">
                     Automatizaciones que <br class="hidden md:block" />
                     <span class="text-blue-600">Convierten</span>
                 </h1>
@@ -357,12 +355,12 @@
             <!-- Screen 2 Content -->
             <div class="h-screen w-full flex items-center px-6 md:px-16 lg:px-24">
                 <div class="max-w-xl">
-                    <p class="text-lg md:text-xl font-light text-black mb-6 leading-relaxed">
+                    <p class="text-lg md:text-xl font-light text-white mb-6 leading-relaxed">
                         El email marketing no es solo una herramienta, es un arte. Cada mensaje es una pieza única,
                         diseñada con precisión, pensada para impactar en el momento justo.
                     </p>
 
-                    <p class="text-lg md:text-xl font-light text-black mb-10 leading-relaxed">
+                    <p class="text-lg md:text-xl font-light text-white mb-10 leading-relaxed">
                         En Immoral, no automatizamos por automatizar. Diseñamos estrategias que optimizan cada
                         interacción con tu audiencia, transformando leads en clientes.
                     </p>
