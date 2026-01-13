@@ -12,12 +12,18 @@ initLoader();
 
 // Initial Hero Animation setup
 document.addEventListener("DOMContentLoaded", () => {
-    initHeroAnimation();
-    initEmailHero();
-    initHeroAnimation();
-    initEmailHero();
-    initServicesCarousel();
-    initContactForm();
+    console.log("DOM Content Loaded - Initializing scripts");
+
+    try { initHeroAnimation(); } catch (e) { console.error("Error in initHeroAnimation:", e); }
+    try { initEmailHero(); } catch (e) { console.error("Error in initEmailHero:", e); }
+    try { initServicesCarousel(); } catch (e) { console.error("Error in initServicesCarousel:", e); }
+
+    try {
+        console.log("Attaching contact form listener...");
+        initContactForm();
+    } catch (e) {
+        console.error("Error in initContactForm:", e);
+    }
 });
 
 function initContactForm() {
