@@ -14,8 +14,62 @@ initLoader();
 document.addEventListener("DOMContentLoaded", () => {
     initHeroAnimation();
     initEmailHero();
+    initHeroAnimation();
+    initEmailHero();
     initServicesCarousel();
+    initContactForm();
 });
+
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    const statusDiv = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Limpiar estado previo
+        statusDiv.classList.add('hidden');
+        statusDiv.classList.remove('text-red-500', 'text-green-500');
+        submitBtn.disabled = true;
+        const originalBtnText = submitBtn.innerText;
+        submitBtn.innerText = 'ENVIANDO...';
+
+        const formData = new FormData(form);
+        const jsonData = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('/api/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(jsonData),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                statusDiv.innerText = 'Mensaje enviado correctamente. Nos pondremos en contacto pronto.';
+                statusDiv.classList.add('text-green-500');
+                statusDiv.classList.remove('hidden');
+                form.reset();
+            } else {
+                throw new Error(result.message || 'Error al enviar el mensaje');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            statusDiv.innerText = 'Hubo un error al enviar el mensaje. Por favor intenta de nuevo.';
+            statusDiv.classList.add('text-red-500');
+            statusDiv.classList.remove('hidden');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerText = originalBtnText;
+        }
+    });
+}
 
 function initDropdowns() {
     const setupDropdown = (btnId, dropdownId) => {

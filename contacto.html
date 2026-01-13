@@ -385,10 +385,10 @@
                     Respondemos con cabeza, no con respuestas automáticas.
                 </p>
 
-                <form class="space-y-8">
+                <form class="space-y-8" id="contactForm">
                     <!-- Nombre -->
                     <div class="relative">
-                        <input type="text" id="nombre" name="nombre" placeholder=" "
+                        <input type="text" id="nombre" name="nombre" placeholder=" " required
                             class="peer w-full border-b border-gray-400 bg-transparent py-2 text-black focus:outline-none focus:border-black transition-colors placeholder-transparent" />
                         <label for="nombre"
                             class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
@@ -398,7 +398,7 @@
 
                     <!-- Correo -->
                     <div class="relative">
-                        <input type="email" id="email" name="email" placeholder=" "
+                        <input type="email" id="email" name="email" placeholder=" " required
                             class="peer w-full border-b border-gray-400 bg-transparent py-2 text-black focus:outline-none focus:border-black transition-colors placeholder-transparent" />
                         <label for="email"
                             class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
@@ -408,14 +408,17 @@
 
                     <!-- Mensaje -->
                     <div class="relative pt-4">
-                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Mensaje"
+                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Mensaje" required
                             class="w-full border border-gray-400 bg-transparent p-3 text-black focus:outline-none focus:border-black rounded-md resize-none placeholder-gray-400"></textarea>
                     </div>
+
+                    <!-- Status Message -->
+                    <div id="formStatus" class="hidden text-sm font-medium"></div>
 
                     <!-- Checkbox y Botón -->
                     <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4">
                         <label class="flex items-center gap-3 cursor-pointer group">
-                            <input type="checkbox" class="peer sr-only" />
+                            <input type="checkbox" class="peer sr-only" required />
                             <div
                                 class="w-5 h-5 border border-gray-400 rounded-sm peer-checked:bg-black peer-checked:border-black transition-colors relative flex items-center justify-center">
                                 <svg class="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity"
@@ -429,8 +432,8 @@
                             </span>
                         </label>
 
-                        <button type="submit"
-                            class="bg-black text-white px-10 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-gray-800 transition-all duration-300 w-full sm:w-auto">
+                        <button type="submit" id="submitBtn"
+                            class="bg-black text-white px-10 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-gray-800 transition-all duration-300 w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed">
                             Enviar
                         </button>
                     </div>
