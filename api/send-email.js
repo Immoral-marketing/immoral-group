@@ -6,21 +6,22 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_Vwjcr5k6_CPrfGoE3T3piRn
 const resend = new Resend(RESEND_API_KEY);
 
 export default async function handler(req, res) {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ message: 'Method not allowed' });
-    }
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Method not allowed' });
+  }
 
-    const { nombre, email, mensaje } = req.body;
+  const { nombre, email, mensaje } = req.body;
 
-    if (!nombre || !email || !mensaje) {
-        return res.status(400).json({ message: 'Faltan campos obligatorios' });
-    }
+  if (!nombre || !email || !mensaje) {
+    return res.status(400).json({ message: 'Faltan campos obligatorios' });
+  }
 
-    try {
-        from: 'immoral.es <noreply@group.immoral.es>',
-            to: ['Gregory@immoral.marketing'],
-                subject: `Nuevo mensaje de contacto: ${nombre}`,
-                    html: `
+  try {
+    const data = await resend.emails.send({
+      from: 'immoral.es <noreply@group.immoral.es>',
+      to: ['Gregory@immoral.marketing'],
+      subject: `Nuevo mensaje de contacto: ${nombre}`,
+      html: `
         <!DOCTYPE html>
         <html>
         <head>
@@ -65,11 +66,11 @@ export default async function handler(req, res) {
         </body>
         </html>
       `,
-        });
+    });
 
     return res.status(200).json({ success: true, data });
-} catch (error) {
+  } catch (error) {
     console.error('Resend Error:', error);
     return res.status(500).json({ success: false, message: error.message });
-}
+  }
 }
