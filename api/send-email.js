@@ -33,7 +33,7 @@ export default async function handler(req, res) {
             
             <!-- Header -->
             <div style="padding: 40px 40px 20px 40px; text-align: center; border-bottom: 1px solid #333333;">
-              <h1 style="color: #ffffff; font-size: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin: 0;">IMMORAL</h1>
+              <img src="https://immoral.es/imgs/Menues/logo-menu-claro.png" alt="IMMORAL" style="max-width: 200px; height: auto;">
             </div>
 
             <!-- Content -->
