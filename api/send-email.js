@@ -19,7 +19,7 @@ export default async function handler(req, res) {
   try {
     const data = await resend.emails.send({
       from: 'immoral.es <noreply@group.immoral.es>',
-      to: ['Gregory@immoral.marketing'],
+      to: ['team@immoral.marketing'],
       subject: `Nuevo mensaje de contacto: ${nombre}`,
       html: `
         <!DOCTYPE html>
