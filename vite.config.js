@@ -33,6 +33,7 @@ export default defineConfig({
                 'caso-travelperk': resolve(__dirname, 'caso-travelperk.html'),
                 'caso-vasquiat': resolve(__dirname, 'caso-vasquiat.html'),
                 'caso-wetribu': resolve(__dirname, 'caso-wetribu.html'),
+                'caso-velites': resolve(__dirname, 'caso-velites.html'),
             },
         },
     },
