@@ -34,6 +34,7 @@ export default defineConfig({
                 'caso-vasquiat': resolve(__dirname, 'caso-vasquiat.html'),
                 'caso-wetribu': resolve(__dirname, 'caso-wetribu.html'),
                 'caso-velites': resolve(__dirname, 'caso-velites.html'),
+                'caso-nutfruit': resolve(__dirname, 'caso-nutfruit.html'),
             },
         },
     },
