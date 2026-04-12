@@ -38,6 +38,7 @@ export default defineConfig({
                 'aviso-legal': resolve(__dirname, 'aviso-legal.html'),
                 'cookies': resolve(__dirname, 'cookies.html'),
                 'privacidad': resolve(__dirname, 'privacidad.html'),
+                'img1': resolve(__dirname, 'img1.html'),
             },
         },
     },
